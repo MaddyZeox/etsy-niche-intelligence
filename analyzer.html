@@ -9,14 +9,14 @@
 </head><body>
 <header><div><small>INDEPENDENT RESEARCH PROTOTYPE</small><h1>Niche Intelligence</h1><div class="muted">Keyword competition & competitor tag analysis</div></div><a href="./">Project home</a></header>
 <main>
-<div class="notice warning"><strong>Version 1.2 · CSV/JSON manual-data prototype.</strong> No live Etsy connection. Any score is an experimental research heuristic, <strong>not official Etsy KD</strong>. Missing search volume stays missing. Data remains in your browser during the session; nothing is uploaded to a server.</div>
+<div class="notice warning"><strong>Version 1.3 · CSV/JSON data-quality prototype.</strong> No live Etsy connection. Any score is an experimental research heuristic, <strong>not official Etsy KD</strong>. Missing search volume stays missing. Data remains in your browser during the session; nothing is uploaded to a server.</div>
 <section class="card"><h2>1 · Research inputs</h2><div class="grid"><div><label for="keyword">Target keyword</label><input id="keyword" placeholder="e.g. personalized dog mom gift" value="personalized dog mom gift"></div><div><label for="country">Target market</label><select id="country"><option>United States</option><option>Global</option><option>United Kingdom</option><option>Canada</option></select></div><div><label for="competition">Reported competing listings (optional)</label><input id="competition" type="number" min="0" placeholder="e.g. 251510"></div><div><label for="volume">Monthly Google searches (optional, NOT Etsy)</label><input id="volume" type="number" min="0" placeholder="Only if sourced & verified"></div><div><label for="source">Data source / observation date</label><input id="source" placeholder="e.g. Manual sample, 2026-11-07"></div></div>
-<p class="muted">Enter competitor records as JSON. One object per listing with <code>title</code> and <code>tags</code> (array of tag strings). Optional: <code>favorites</code>, <code>views</code>, <code>price</code>, <code>listingAgeDays</code>, <code>shopSales</code>. Do not invent missing values.</p>
-<div class="notice"><strong>CSV import:</strong> Import a local CSV containing <code>title</code> and <code>tags</code> columns. Separate tags inside a CSV cell with <code>|</code> (recommended) or <code>;</code>. Optional columns: <code>favorites</code>, <code>views</code>, <code>price</code>, <code>listingAgeDays</code>, <code>shopSales</code>. Your CSV is processed in this browser only; importing replaces the JSON records below.</div>
+<p class="muted">Enter competitor records as JSON. One object per listing with <code>title</code> and <code>tags</code> (array of tag strings). Optional: <code>listingId</code>, <code>url</code>, <code>shopName</code>, <code>favorites</code>, <code>views</code>, <code>price</code>, <code>listingAgeDays</code>, <code>shopSales</code>. Do not invent missing values.</p>
+<div class="notice"><strong>CSV import:</strong> Import a local CSV containing <code>title</code> and <code>tags</code> columns. Separate tags inside a CSV cell with <code>|</code> (recommended) or <code>;</code>. Optional columns: <code>listingId</code>, <code>url</code>, <code>shopName</code>, <code>favorites</code>, <code>views</code>, <code>price</code>, <code>listingAgeDays</code>, <code>shopSales</code>. Your CSV is processed in this browser only; importing replaces the JSON records below.</div>
 <div class="controls"><label for="csvfile" style="align-self:center;margin:0">CSV file</label><input id="csvfile" type="file" accept=".csv,text/csv" style="max-width:350px"><button id="samplecsv" type="button" class="secondary">Download sample CSV</button></div><p id="csvstatus" class="muted" role="status">No CSV imported.</p>
-<label for="records">Competitor listing records (JSON array)</label><textarea id="records" spellcheck="false" placeholder='[{"title":"Personalized Dog Mom Gift Mug","tags":["dog mom gift","dog lover gift"],"favorites":20,"views":500}]'></textarea><div class="controls"><button id="analyze">Analyze records</button><button id="example" class="secondary">Load DEMO (fictional)</button><button id="clear" class="secondary">Clear</button><button id="export" class="secondary" disabled>Download report JSON</button></div><p id="err" role="alert" class="error"></p></section>
-<section id="results" class="card" hidden><h2>2 · Analysis report</h2><div id="summary" class="metrics"></div><div id="verdict" class="notice"></div><h2>Competitor tag frequencies</h2><p class="muted">Observed frequency only; tags with lower usage are not automatically low-competition keywords.</p><div id="tagTable" class="scroll"></div><h2>Keyword coverage</h2><p class="muted">Partial matching means word overlap, not proof of buyer search intent or ranking relevance.</p><div id="coverage" class="scroll"></div><h2>What the score means</h2><p id="explain" class="muted"></p></section>
-<section class="card"><h2>3 · How we will improve it</h2><p>After authorized Etsy API access is approved, add compliant read-only listing retrieval through a <strong>secure backend</strong>. The public GitHub Pages site must never contain private API credentials. Later, benchmark our difficulty heuristic against manually assessed competitor sets and document changes to its scoring formula.</p></section>
+<label for="records">Competitor listing records (JSON array)</label><textarea id="records" spellcheck="false" placeholder='[{"title":"Personalized Dog Mom Gift Mug","tags":["dog mom gift","dog lover gift"],"favorites":20,"views":500}]'></textarea><div class="controls"><button id="analyze">Analyze records</button><button id="example" class="secondary">Load DEMO (fictional)</button><button id="clear" class="secondary">Clear</button><button id="export" class="secondary" disabled>Download report JSON</button><button id="cleancsv" class="secondary" disabled>Download cleaned CSV</button></div><p id="err" role="alert" class="error"></p></section>
+<section id="quality" class="card" hidden><h2>2 · Data quality audit</h2><p class="muted">Checks are based on submitted data only. Exact duplicate IDs/URLs can be automatically excluded from the cleaned export; repeated titles alone are flagged, not removed.</p><div id="qualitysummary" class="metrics"></div><div id="qualityissues" class="scroll"></div></section><section id="results" class="card" hidden><h2>3 · Analysis report</h2><div id="summary" class="metrics"></div><div id="verdict" class="notice"></div><h2>Competitor tag frequencies</h2><p class="muted">Observed frequency only; tags with lower usage are not automatically low-competition keywords.</p><div id="tagTable" class="scroll"></div><h2>Keyword coverage</h2><p class="muted">Partial matching means word overlap, not proof of buyer search intent or ranking relevance.</p><div id="coverage" class="scroll"></div><h2>What the score means</h2><p id="explain" class="muted"></p></section>
+<section class="card"><h2>4 · How we will improve it</h2><p>After authorized Etsy API access is approved, add compliant read-only listing retrieval through a <strong>secure backend</strong>. The public GitHub Pages site must never contain private API credentials. Later, benchmark our difficulty heuristic against manually assessed competitor sets and document changes to its scoring formula.</p></section>
 </main><footer>Independent research project. Not affiliated with or endorsed by Etsy. No ranking or sales guarantees.</footer>
 <script>
 'use strict';
@@ -45,8 +45,8 @@ function parseCSV(text){
     const o=Object.fromEntries(headers.map((h,j)=>[h,cols[j].trim()]));
     if(!o.title)throw Error(`CSV row ${i+2}: title is required.`);
     let tags=o.tags?o.tags.split(/[|;]/).map(x=>x.trim()).filter(Boolean):[];
-    if(!tags.length)throw Error(`CSV row ${i+2}: at least one tag is required.`);
-    let item={title:o.title,tags};
+    // Missing tags are retained and reported in the quality audit.
+    let item={title:o.title,tags};for(const key of ['listingid','url','shopname'])if(o[key])item[key==='listingid'?'listingId':key==='shopname'?'shopName':key]=o[key];
     for(let key of optional){if(o[key]!==undefined&&o[key]!==''){
       const n=Number(o[key]);if(!Number.isFinite(n)||n<0)throw Error(`CSV row ${i+2}: ${key} must be nonnegative numeric.`);
       item[key==='listingagedays'?'listingAgeDays':key==='shopsales'?'shopSales':key]=n;
@@ -63,18 +63,52 @@ $('csvfile').addEventListener('change',async e=>{
   if(file.size>2*1024*1024)throw Error('CSV is too large (max 2 MB).');
   const rows=parseCSV(await file.text());
   $('records').value=JSON.stringify(rows,null,2);
-  $('results').hidden=true;$('export').disabled=true;latest=null;
+  $('results').hidden=true;$('quality').hidden=true;$('export').disabled=true;$('cleancsv').disabled=true;latest=null;
   $('csvstatus').textContent=`Imported ${rows.length} listing records from ${file.name}. Review the JSON, then click Analyze records.`;
  }catch(err){$('csvstatus').textContent='Import failed.';$('err').textContent=err.message}
  e.target.value='';
 });
-$('samplecsv').addEventListener('click',()=>downloadText('sample-competitors.csv','title,tags,favorites,views,price,listingAgeDays,shopSales\r\n"Personalized Dog Mom Mug","dog mom gift|dog lover gift|personalized mug",12,300,18.50,25,\r\n"Dog Mom Canvas Tote","dog lover gift|dog tote",3,110,22.00,85,\r\n"Custom Dog Mom Shirt","dog mom gift|custom dog mom",17,410,29.00,190,\r\n','text/csv;charset=utf-8'));
+$('samplecsv').addEventListener('click',()=>downloadText('sample-competitors.csv','listingId,title,tags,favorites,views,price,listingAgeDays,shopSales,shopName\r\n1001,"Personalized Dog Mom Mug","dog mom gift|dog lover gift|personalized mug",12,300,18.50,25,,Shop A\r\n1002,"Dog Mom Canvas Tote","dog lover gift|dog tote",3,110,22.00,85,,Shop B\r\n1003,"Custom Dog Mom Shirt","dog mom gift|custom dog mom",17,410,29.00,190,,Shop C\r\n','text/csv;charset=utf-8'));
 const nval=x=>typeof x==='number'&&Number.isFinite(x)&&x>=0?x:null;
 let latest=null;
 function metric(name,value,note){return `<div class="metric"><small>${esc(name)}</small><strong>${esc(value)}</strong><small>${esc(note)}</small></div>`}
 function percentileRankProxy(count){if(count===null)return null;return Math.min(100,Math.round(100*Math.log10(1+count)/6))}
-function analyse(){ $('err').textContent='';$('results').hidden=true;$('export').disabled=true;let rows;try{rows=JSON.parse($('records').value)}catch(e){$('err').textContent='Valid JSON array required: '+e.message;return}if(!Array.isArray(rows)||rows.length<1||rows.length>500){$('err').textContent='Provide 1 to 500 listing objects.';return}
+let cleanedRows=[];
+function qualityAudit(rows){
+ const issues=[],clean=[],seen=new Set(),titleCounts=new Map(),counts={duplicates:0,missingTags:0,invalidNumbers:0,missingTitles:0,missingIds:0};
+ const numeric=['favorites','views','price','listingAgeDays','shopSales'];
+ rows.forEach((r,i)=>{
+   if(!r||typeof r!=='object'||Array.isArray(r)){issues.push([i+1,'Invalid record','Expected a listing object']);return}
+   if(typeof r.title!=='string'||!r.title.trim()){counts.missingTitles++;issues.push([i+1,'Missing title','Listing excluded']);return}
+   if(!Array.isArray(r.tags)||r.tags.some(x=>typeof x!=='string')){issues.push([i+1,'Invalid tags','Expected an array of strings']);return}
+   const id=r.listingId!=null?String(r.listingId).trim():'';
+   const url=typeof r.url==='string'?r.url.trim():'';
+   let uniqueKey=id?'id:'+id:url?'url:'+url.replace(/\/$/,'').toLowerCase():null;
+   if(uniqueKey&&seen.has(uniqueKey)){counts.duplicates++;issues.push([i+1,'Duplicate ID / URL','Excluded from clean export']);return}
+   if(uniqueKey)seen.add(uniqueKey);else counts.missingIds++;
+   const copy={...r,title:r.title.trim(),tags:[...new Set(r.tags.map(t=>t.trim()).filter(Boolean))]};
+   if(!copy.tags.length){counts.missingTags++;issues.push([i+1,'Missing tags','Retained, but incomplete SEO evidence'])}
+   for(const field of numeric){if(copy[field]!==undefined&&copy[field]!==null&&copy[field]!==''){
+     const n=Number(copy[field]);if(!Number.isFinite(n)||n<0){counts.invalidNumbers++;issues.push([i+1,'Invalid '+field,'Removed invalid numeric field']);delete copy[field]}
+     else copy[field]=n;
+   }}
+   const titleKey=norm(copy.title);titleCounts.set(titleKey,(titleCounts.get(titleKey)||0)+1);
+   clean.push(copy)
+ });
+ for(const [title,n] of titleCounts){if(n>1)issues.push(['—','Repeated title ('+n+')',title+' — review manually; not auto-removed'])}
+ return {clean,issues,counts};
+}
+function csvQuote(v){let s=String(v??'');return /[",\n\r]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}
+function exportClean(){const fields=['listingId','url','shopName','title','tags','favorites','views','price','listingAgeDays','shopSales'];const lines=[fields.join(',')];for(const row of cleanedRows)lines.push(fields.map(key=>csvQuote(key==='tags'?row.tags.join('|'):row[key])).join(','));downloadText('cleaned-competitors.csv',lines.join('\r\n')+'\r\n','text/csv;charset=utf-8')}
+$('cleancsv').addEventListener('click',exportClean);
+function analyse(){ $('err').textContent='';$('results').hidden=true;$('quality').hidden=true;$('export').disabled=true;$('cleancsv').disabled=true;let rows;try{rows=JSON.parse($('records').value)}catch(e){$('err').textContent='Valid JSON array required: '+e.message;return}if(!Array.isArray(rows)||rows.length<1||rows.length>500){$('err').textContent='Provide 1 to 500 listing objects.';return}
 for(let i=0;i<rows.length;i++){let r=rows[i];if(!r||typeof r.title!=='string'||!Array.isArray(r.tags)||r.tags.some(t=>typeof t!=='string')){$('err').textContent=`Listing ${i+1}: title must be a string, tags must be an array of strings.`;return}}
+const audit=qualityAudit(rows);cleanedRows=audit.clean;
+$('quality').hidden=false;$('cleancsv').disabled=cleanedRows.length===0;
+$('qualitysummary').innerHTML=metric('Raw records',String(rows.length),'Submitted')+metric('Unique usable',String(cleanedRows.length),'Duplicate IDs/URLs removed')+metric('Duplicates',String(audit.counts.duplicates),'Only unambiguous ID/URL matches')+metric('Missing tags',String(audit.counts.missingTags),'Retained and flagged')+metric('Invalid numeric values',String(audit.counts.invalidNumbers),'Excluded from clean export')+metric('Missing ID/URL',String(audit.counts.missingIds),'Deduplication limited');
+$('qualityissues').innerHTML=audit.issues.length?'<table><thead><tr><th>Record</th><th>Finding</th><th>Action</th></tr></thead><tbody>'+audit.issues.slice(0,100).map(x=>'<tr>'+x.map(y=>'<td>'+esc(y)+'</td>').join('')+'</tr>').join('')+'</tbody></table>':'<p class="ok">No issues detected by the available checks.</p>';
+if(!cleanedRows.length){$('err').textContent='No usable records after validation.';return}
+rows=cleanedRows;
 let keyword=norm($('keyword').value);if(!keyword){$('err').textContent='Enter a target keyword.';return}
 // Explicit phrase matching and token-based coverage are intentionally different signals.
 const tokens=s=>[...new Set(norm(s).split(' ').filter(Boolean))];
@@ -110,13 +144,13 @@ const titleSaturation=Math.round(100*phraseTitle/total),tagSaturation=Math.round
 // or unlabelled/demo data. These conditions are not a reliable market research basis.
 const source=$('source').value.trim();
 const fictional=/demo|fictional|sample csv|test data/i.test(source);
-const scoreReady=total>=30&&listings!==null&&source.length>=4&&!fictional;
+const scoreReady=total>=30&&listings!==null&&source.length>=4&&!fictional&&audit.counts.invalidNumbers===0&&audit.counts.missingTags===0;
 const score=scoreReady?Math.round(density*.5+titleSaturation*.25+tagSaturation*.25):null;
 const issues=[];
 if(total<30)issues.push(`Only ${total} listing(s): minimum 30 required for a provisional score`);
 if(listings===null)issues.push('Competing listing count missing');
 if(source.length<4)issues.push('Research source and observation date missing');
-if(fictional)issues.push('Demo/test source must not receive a difficulty score');
+if(fictional)issues.push('Demo/test source must not receive a difficulty score');if(audit.counts.invalidNumbers)issues.push('Invalid numeric values found');if(audit.counts.missingTags)issues.push('Missing tags in sampled listings');if(audit.counts.missingIds)issues.push('Some records lack ID/URL; duplicates may remain');
 if(phraseTitle===0&&exactTags===0)issues.push('No exact keyword phrase observed in sampled titles or tags');
 const confidence=scoreReady?'Limited — inputs manually supplied, model unvalidated':'Very low — insufficient input evidence';
 const tags=[...uniqueTags.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));
@@ -127,7 +161,7 @@ $('coverage').innerHTML=`<table><tr><th>Signal</th><th>Observed count</th><th>Sa
 $('explain').textContent=`Experimental weighted model (only when basic evidence gate passes): reported listing density (50%), title phrase saturation (25%), exact tag saturation (25%). Missing data never becomes zero competition. Partial word-overlap matching is reported separately and does not increase KD. Sample size ${total}. This score does not include real sales, conversion, personalized search ranking, query intent, shop age, pricing feasibility or product quality. A high/low score is not a GO/NO-GO verdict.`;
 latest={keyword,country:$('country').value,source:$('source').value||null,volumeGoogle:volume,competition:listings,records:total,tagCounts:Object.fromEntries(tags),signals:{exactTitle,phraseTitle,partialTitle,exactTags,phraseTags,partialTags},experimentalDifficulty:score,evidenceGaps:issues,confidence,verdict:'RESEARCH FURTHER',generatedAt:new Date().toISOString()};$('results').hidden=false;$('export').disabled=false;$('results').scrollIntoView({behavior:'smooth',block:'start'})}
 $('analyze').addEventListener('click',analyse);
-$('example').addEventListener('click',()=>{$('keyword').value='dog mom gift';$('competition').value='';$('volume').value='';$('source').value='Fictional demonstration data — NOT live Etsy data';$('records').value=JSON.stringify([{title:'Custom Dog Mom Gift Mug',tags:['dog mom gift','dog lover gift','pet mom mug'],favorites:12,views:300},{title:'Gift for Dog Lovers Canvas Tote',tags:['dog lover gift','dog mom gift','dog tote'],favorites:3,views:110},{title:'Dog Mom Shirt with Name',tags:['pet parent','dog shirt','custom dog mom'],favorites:17,views:410}],null,2);$('results').hidden=true;$('err').textContent='Demo loaded: entirely fictional records. Click Analyze records.'});
-$('clear').addEventListener('click',()=>{for(const id of ['keyword','competition','volume','source','records'])$(id).value='';$('results').hidden=true;$('err').textContent='';$('csvstatus').textContent='No CSV imported.';latest=null;$('export').disabled=true});
+$('example').addEventListener('click',()=>{$('keyword').value='dog mom gift';$('competition').value='';$('volume').value='';$('source').value='Fictional demonstration data — NOT live Etsy data';$('records').value=JSON.stringify([{title:'Custom Dog Mom Gift Mug',tags:['dog mom gift','dog lover gift','pet mom mug'],favorites:12,views:300},{title:'Gift for Dog Lovers Canvas Tote',tags:['dog lover gift','dog mom gift','dog tote'],favorites:3,views:110},{title:'Dog Mom Shirt with Name',tags:['pet parent','dog shirt','custom dog mom'],favorites:17,views:410}],null,2);$('results').hidden=true;$('quality').hidden=true;$('err').textContent='Demo loaded: entirely fictional records. Click Analyze records.'});
+$('clear').addEventListener('click',()=>{for(const id of ['keyword','competition','volume','source','records'])$(id).value='';$('results').hidden=true;$('quality').hidden=true;$('cleancsv').disabled=true;$('err').textContent='';$('csvstatus').textContent='No CSV imported.';latest=null;$('export').disabled=true});
 $('export').addEventListener('click',()=>{if(!latest)return;let blob=new Blob([JSON.stringify(latest,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='niche-intelligence-report.json';a.click();URL.revokeObjectURL(url)});
 </script></body></html>
