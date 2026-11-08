@@ -9,7 +9,7 @@
 </head><body>
 <header><div><small>INDEPENDENT RESEARCH PROTOTYPE</small><h1>Niche Intelligence</h1><div class="muted">Keyword competition & competitor tag analysis</div></div><a href="./">Project home</a></header>
 <main>
-<div class="notice warning"><strong>Version 1.3 · CSV/JSON data-quality prototype.</strong> No live Etsy connection. Any score is an experimental research heuristic, <strong>not official Etsy KD</strong>. Missing search volume stays missing. Data remains in your browser during the session; nothing is uploaded to a server.</div>
+<div class="notice warning"><strong>Version 1.3.1 · CSV/JSON data-quality prototype.</strong> No live Etsy connection. Any score is an experimental research heuristic, <strong>not official Etsy KD</strong>. Missing search volume stays missing. Data remains in your browser during the session; nothing is uploaded to a server.</div>
 <section class="card"><h2>1 · Research inputs</h2><div class="grid"><div><label for="keyword">Target keyword</label><input id="keyword" placeholder="e.g. personalized dog mom gift" value="personalized dog mom gift"></div><div><label for="country">Target market</label><select id="country"><option>United States</option><option>Global</option><option>United Kingdom</option><option>Canada</option></select></div><div><label for="competition">Reported competing listings (optional)</label><input id="competition" type="number" min="0" placeholder="e.g. 251510"></div><div><label for="volume">Monthly Google searches (optional, NOT Etsy)</label><input id="volume" type="number" min="0" placeholder="Only if sourced & verified"></div><div><label for="source">Data source / observation date</label><input id="source" placeholder="e.g. Manual sample, 2026-11-07"></div></div>
 <p class="muted">Enter competitor records as JSON. One object per listing with <code>title</code> and <code>tags</code> (array of tag strings). Optional: <code>listingId</code>, <code>url</code>, <code>shopName</code>, <code>favorites</code>, <code>views</code>, <code>price</code>, <code>listingAgeDays</code>, <code>shopSales</code>. Do not invent missing values.</p>
 <div class="notice"><strong>CSV import:</strong> Import a local CSV containing <code>title</code> and <code>tags</code> columns. Separate tags inside a CSV cell with <code>|</code> (recommended) or <code>;</code>. Optional columns: <code>listingId</code>, <code>url</code>, <code>shopName</code>, <code>favorites</code>, <code>views</code>, <code>price</code>, <code>listingAgeDays</code>, <code>shopSales</code>. Your CSV is processed in this browser only; importing replaces the JSON records below.</div>
@@ -48,8 +48,9 @@ function parseCSV(text){
     // Missing tags are retained and reported in the quality audit.
     let item={title:o.title,tags};for(const key of ['listingid','url','shopname'])if(o[key])item[key==='listingid'?'listingId':key==='shopname'?'shopName':key]=o[key];
     for(let key of optional){if(o[key]!==undefined&&o[key]!==''){
-      const n=Number(o[key]);if(!Number.isFinite(n)||n<0)throw Error(`CSV row ${i+2}: ${key} must be nonnegative numeric.`);
-      item[key==='listingagedays'?'listingAgeDays':key==='shopsales'?'shopSales':key]=n;
+      const n=Number(o[key]);
+      // Keep invalid input as text so the quality audit can flag and exclude the record.
+      item[key==='listingagedays'?'listingAgeDays':key==='shopsales'?'shopSales':key]=Number.isFinite(n)&&n>=0?n:o[key];
     }}
     return item;
   });
@@ -65,7 +66,7 @@ $('csvfile').addEventListener('change',async e=>{
   $('records').value=JSON.stringify(rows,null,2);
   $('results').hidden=true;$('quality').hidden=true;$('export').disabled=true;$('cleancsv').disabled=true;latest=null;
   $('csvstatus').textContent=`Imported ${rows.length} listing records from ${file.name}. Review the JSON, then click Analyze records.`;
- }catch(err){$('csvstatus').textContent='Import failed.';$('err').textContent=err.message}
+ }catch(err){$('csvstatus').textContent='Import failed — previous records are still loaded; see error below.';$('err').textContent=err.message}
  e.target.value='';
 });
 $('samplecsv').addEventListener('click',()=>downloadText('sample-competitors.csv','listingId,title,tags,favorites,views,price,listingAgeDays,shopSales,shopName\r\n1001,"Personalized Dog Mom Mug","dog mom gift|dog lover gift|personalized mug",12,300,18.50,25,,Shop A\r\n1002,"Dog Mom Canvas Tote","dog lover gift|dog tote",3,110,22.00,85,,Shop B\r\n1003,"Custom Dog Mom Shirt","dog mom gift|custom dog mom",17,410,29.00,190,,Shop C\r\n','text/csv;charset=utf-8'));
@@ -85,13 +86,16 @@ function qualityAudit(rows){
    const url=typeof r.url==='string'?r.url.trim():'';
    let uniqueKey=id?'id:'+id:url?'url:'+url.replace(/\/$/,'').toLowerCase():null;
    if(uniqueKey&&seen.has(uniqueKey)){counts.duplicates++;issues.push([i+1,'Duplicate ID / URL','Excluded from clean export']);return}
-   if(uniqueKey)seen.add(uniqueKey);else counts.missingIds++;
    const copy={...r,title:r.title.trim(),tags:[...new Set(r.tags.map(t=>t.trim()).filter(Boolean))]};
-   if(!copy.tags.length){counts.missingTags++;issues.push([i+1,'Missing tags','Retained, but incomplete SEO evidence'])}
+   // Reject an entire listing if a supplied numeric field is invalid; do not silently drop the field.
+   let invalid=false;
    for(const field of numeric){if(copy[field]!==undefined&&copy[field]!==null&&copy[field]!==''){
-     const n=Number(copy[field]);if(!Number.isFinite(n)||n<0){counts.invalidNumbers++;issues.push([i+1,'Invalid '+field,'Removed invalid numeric field']);delete copy[field]}
+     const n=Number(copy[field]);if(!Number.isFinite(n)||n<0){counts.invalidNumbers++;issues.push([i+1,'Invalid '+field,'Excluded from clean analysis/export']);invalid=true}
      else copy[field]=n;
    }}
+   if(invalid)return;
+   if(uniqueKey)seen.add(uniqueKey);else counts.missingIds++;
+   if(!copy.tags.length){counts.missingTags++;issues.push([i+1,'Missing tags','Retained, but incomplete SEO evidence'])}
    const titleKey=norm(copy.title);titleCounts.set(titleKey,(titleCounts.get(titleKey)||0)+1);
    clean.push(copy)
  });
