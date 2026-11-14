@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="light" name="color-scheme"/>
+<title>Niche Intelligence — Etsy Seller Research</title>
+<style>
+:root{--paper:#f7f5f0;--white:#fffefa;--ink:#252723;--muted:#646660;--line:#dedbd3;--accent:#874c36;--accent-dark:#693a29;--accent-wash:#f4ebe5;--sage:#486b57;--soft:#f1eee7;--error:#a33d32;--radius:12px;--shadow:0 4px 18px rgba(44,39,33,.035)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--paper);font:14px/1.52 Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}a{color:var(--accent)}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #bc8f75;outline-offset:2px}
+.header{background:var(--white);border-bottom:1px solid var(--line)}.header-inner{max-width:1200px;margin:auto;padding:18px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:800;letter-spacing:-.5px;font-size:19px}.logo{display:inline-block;width:12px;height:12px;background:var(--accent);border-radius:3px;transform:rotate(17deg);margin-right:11px}.header-meta{color:var(--muted);font-size:12px}
+.shell{max-width:1200px;margin:0 auto;padding:38px 26px 70px}.eyebrow{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.35px;color:var(--accent)}h1{font-size:clamp(29px,3.6vw,39px);letter-spacing:-1.3px;line-height:1.2;margin:9px 0 9px}h2{font-size:19px;letter-spacing:-.45px;margin:0}h3{font-size:15px;margin:0}.lead{color:var(--muted);font-size:15px;margin:0 0 23px;max-width:70ch}.card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.search-card{padding:22px 24px;margin-bottom:19px}.search-grid{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(180px,1fr) auto;gap:13px;align-items:end}.field label{font-size:12px;font-weight:750;display:block;margin-bottom:7px}.field input,.field select{width:100%;height:45px;padding:0 13px;border:1px solid #c9c6be;background:#fff;border-radius:7px;color:var(--ink)}.field input::placeholder{color:#8a8c86}.field select:disabled{color:#777c75;background:#f1f0ec}.primary{height:45px;border:1px solid var(--accent);background:var(--accent);color:white;padding:0 22px;border-radius:7px;font-weight:750;white-space:nowrap}.primary:hover{background:var(--accent-dark)}.primary:disabled{opacity:.62;cursor:wait}.subtext{margin:12px 0 0;font-size:12px;color:var(--muted)}.status-line{margin:12px 0 0;min-height:19px;font-size:12.5px;color:var(--muted)}.status-line.good{color:var(--sage)}.status-line.bad{color:var(--error)}.status-line.busy{color:var(--accent)}
+.content{display:none}.content.visible{display:block}.report-top{display:flex;justify-content:space-between;gap:12px;align-items:start;margin:22px 0 14px}.report-top h2{font-size:22px;margin:5px 0 0}.meta{color:var(--muted);font-size:12px}.small-pill{font-size:11px;background:var(--soft);padding:5px 9px;border-radius:30px;color:#565a53;display:inline-flex;align-items:center;gap:5px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:15px}.stat{padding:17px 18px;min-height:105px}.stat .number{font-size:29px;line-height:1.3;letter-spacing:-.8px;font-weight:780;font-variant-numeric:tabular-nums}.stat .lbl{color:var(--muted);font-size:12px}.stat .context{color:var(--muted);font-size:11px;margin-top:3px}.toolbar{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--line);margin:21px 0 17px;overflow:visible}.tab{padding:10px 14px;border:0;border-bottom:3px solid transparent;color:var(--muted);background:transparent;font-weight:700;white-space:nowrap;margin-bottom:-1px}.tab[aria-selected=true]{border-bottom-color:var(--accent);color:var(--ink)}.tab:hover{color:var(--accent)}.tab-panel[hidden]{display:none!important}.two-col{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:15px}.section-card{padding:21px 22px}.section-head{display:flex;align-items:start;justify-content:space-between;gap:14px;margin-bottom:14px}.muted{color:var(--muted)}.micro{font-size:12px}.kicker{font-size:11px;color:var(--muted);margin:5px 0}.barrow{display:grid;grid-template-columns:70px minmax(0,1fr) 40px;align-items:center;gap:12px;margin:12px 0;font-size:12px}.bar-track{height:12px;border-radius:4px;background:var(--soft);overflow:hidden}.bar-fill{height:100%;background:var(--accent);border-radius:4px}.bar-fill.sage{background:#728d78}.num{text-align:right;font-variant-numeric:tabular-nums}.notice{background:#f6f2ec;border-left:3px solid var(--accent);padding:12px 14px;border-radius:3px;color:#4e4c47;font-size:12.5px;line-height:1.6}.insight-list{padding:0;margin:0;list-style:none}.insight-list li{padding:12px 0;border-bottom:1px solid var(--line)}.insight-list li:last-child{border:0}.insight-list strong{display:block;font-size:13px;margin-bottom:3px}.insight-list p{margin:0;color:var(--muted);font-size:12.5px}.label-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.graychip{font-size:11px;border-radius:30px;padding:2px 8px;background:var(--soft);color:#5e605a}.quality{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:11px 0;gap:10px}.quality:last-child{border:0}.quality b{font-size:12px}.quality span{color:var(--muted);font-size:12px;text-align:right}.research-table{border-collapse:collapse;min-width:1020px;width:100%}.research-table th{text-align:left;padding:11px 10px;font-size:11px;color:#5b6058;background:#f5f2ec;border-bottom:1px solid var(--line);white-space:nowrap}.research-table td{padding:11px 10px;border-bottom:1px solid #eae6e0;vertical-align:top;font-size:12.5px}.research-table tr:last-child td{border-bottom:0}.research-table tbody tr:hover{background:#fdfbf7}.research-table .title-link{font-weight:700;text-decoration:none;color:#312e2a;line-height:1.45;display:block;max-width:440px}.research-table .title-link:hover{text-decoration:underline;color:var(--accent)}.table-scroller{overflow-x:auto;border:1px solid var(--line);border-radius:8px}.method-summary{cursor:pointer;font-weight:700;font-size:13px;list-style-position:inside}.method-body{padding-top:10px}.table-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:13px}.select-small,.search-small{border:1px solid #cbc8c0;background:#fff;border-radius:7px;height:38px;padding:0 11px;color:var(--ink)}.search-small{flex:1;min-width:190px}.select-small{max-width:200px}.table-foot{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:13px}.secondary{border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--ink);padding:8px 12px;font-weight:700}.secondary:hover{background:var(--soft)}.secondary:disabled{opacity:.4;cursor:default}.badge-success{font-size:11px;color:var(--sage)}.panel-gap{margin-top:15px}.empty{padding:32px;text-align:center;color:var(--muted);background:#faf8f4;border:1px dashed var(--line);border-radius:8px}.welcome{padding:45px 24px;text-align:center}.welcome h2{font-size:20px;margin-bottom:6px}.welcome p{font-size:13px;color:var(--muted);max-width:56ch;margin:auto}.footer{border-top:1px solid var(--line);padding-top:22px;margin-top:42px;font-size:11.5px;color:var(--muted)}.moneyselect{height:34px;border-radius:6px;border:1px solid var(--line);background:#fff;padding:0 8px}.split{display:flex;justify-content:space-between;gap:10px;align-items:center}.signpost{font-size:12px;color:var(--muted);margin:12px 0 0}.checkpoints{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.checkpoint{padding:17px}.checkpoint h3{margin-bottom:5px}.checkpoint p{font-size:12px;color:var(--muted);margin:0}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+@media(max-width:920px){.search-grid{grid-template-columns:minmax(0,1fr) 190px}.search-grid .primary{grid-column:1 / -1}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.two-col{grid-template-columns:1fr}}
+@media(max-width:580px){.header-inner{padding:15px 17px}.header-meta{display:none}.shell{padding:26px 15px 50px}.search-card,.section-card{padding:17px}.search-grid{grid-template-columns:1fr}.search-grid .primary{grid-column:auto;width:100%}.report-top{display:block}.stats{gap:8px}.stat{padding:13px;min-height:90px}.stat .number{font-size:24px}.toolbar .tab{font-size:12px;padding:10px 11px}.checkpoints{grid-template-columns:1fr}.table-foot{flex-wrap:wrap}.barrow{grid-template-columns:62px minmax(0,1fr) 34px;gap:7px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.enrichment-tools{border:1px solid var(--line);border-radius:8px;background:#f9f7f2;padding:12px;margin:10px 0 13px;display:flex;flex-direction:column;gap:8px}
+
+
+
+.scope-static{display:flex;align-items:center;justify-content:space-between;gap:9px;min-height:45px;padding:6px 12px;border:1px solid var(--line);border-radius:7px;background:var(--soft);font-weight:700;font-size:12px}.scope-static span{font-weight:400;font-size:10px;color:var(--muted)}
+.filter-label{display:block;font-size:11px;color:var(--muted);margin-bottom:4px}.research-confidence{padding:15px 20px}.research-confidence .method-summary{display:flex;justify-content:space-between;gap:10px;align-items:center}.research-confidence .method-body{max-width:850px}.research-confidence .quality{padding:9px 0}.decision-main{font-size:14px;font-weight:650;line-height:1.6;margin:6px 0 14px}.decision-evidence{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:10px 0}.evidence-item{border:1px solid var(--line);border-radius:7px;padding:11px}.evidence-item b{display:block;font-size:17px}.evidence-item span{font-size:11px;color:var(--muted)}.action-callout{border-radius:7px;background:#f5f0e9;padding:14px 15px;font-size:12.5px;margin-top:12px}.action-callout p{margin:6px 0 9px;color:#55514a}.action-callout button{margin-top:5px}.filter-field{display:flex;flex-direction:column;gap:5px;min-width:142px}.filter-field label{font-size:11px;font-weight:700;color:var(--muted)}.filter-query{flex:1;min-width:220px}.filter-query input{width:100%}.table-controls{align-items:flex-end;gap:12px}.filter-hint{font-size:11px;color:var(--muted);margin:-2px 0 12px}.step-list{padding:0;margin:12px 0 15px;list-style:none;counter-reset:plan}.step-list li{counter-increment:plan;position:relative;padding:13px 10px 13px 50px;border-bottom:1px solid var(--line)}.step-list li::before{content:counter(plan);position:absolute;left:5px;top:14px;width:29px;height:29px;display:grid;place-items:center;background:var(--soft);border-radius:50%;font-weight:800;color:var(--accent)}.step-list strong{display:block;font-size:13px}.step-list p{margin:4px 0 0;color:var(--muted);font-size:12.5px}
+@media(max-width:750px){.decision-evidence{grid-template-columns:1fr}.scope-static{display:block}.scope-static span{display:block}.search-grid{grid-template-columns:1fr}}
+
+/* v3.3 deliberate seller-first enhancements */
+.outlook-legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:12px 0}
+.outlook-level{border:1px solid var(--line);border-radius:8px;padding:12px 11px;background:#fdfcf9;min-width:0}
+.outlook-level strong{display:block;font-size:12px;letter-spacing:.35px;margin-bottom:5px}
+.outlook-level span{font-size:11.5px;line-height:1.45;color:#575850;display:block}
+.outlook-level.green{border-top:3px solid #4c755c}.outlook-level.amber{border-top:3px solid #a47a31}.outlook-level.red{border-top:3px solid #a85047}
+.outlook-status{font-weight:750;font-size:13px;padding:6px 10px;border-radius:6px;display:inline-flex;align-items:center;background:#efeee9;color:#4b514c}
+.outlook-status.green{background:#e5f1e9;color:#315d42}.outlook-status.amber{background:#fff0d6;color:#805a1c}.outlook-status.red{background:#fbe9e5;color:#843e36}
+.evidence-links{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.evidence-links a{border:1px solid var(--line);color:var(--accent);padding:6px 9px;border-radius:6px;text-decoration:none;background:#fff;font-size:11.5px}
+.evidence-links a:hover{text-decoration:underline}
+.muted-label{font-size:11px;color:var(--muted)}
+.field .scope-static{font-weight:750}
+@media(max-width:660px){.outlook-legend{grid-template-columns:1fr}.outlook-level{display:flex;align-items:start;gap:12px}.outlook-level strong{min-width:52px}.report-top{flex-direction:column}}
+#match-audit-panel[hidden]{display:none!important}
+
+.view-saved .report-top,.view-saved .stats{display:none!important}
+/* v4 - product navigation: primary tools are sidebar destinations, not duplicate top tabs */
+body{background:#f7f5f0}.app-frame{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:100vh;max-width:1800px;margin:0 auto}
+.app-sidebar{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;background:#fffefa;border-right:1px solid var(--line);padding:25px 14px 18px;z-index:5}
+.sidebar-brand{display:flex;align-items:center;gap:11px;padding:5px 9px 26px;border-bottom:1px solid var(--line);margin-bottom:23px}
+.brand-icon{width:37px;height:37px;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800;letter-spacing:-.5px;flex-shrink:0}
+.sidebar-brand strong{display:block;font-size:14px;white-space:nowrap;letter-spacing:-.3px}.sidebar-brand small{font-size:11px;color:var(--muted);display:block}
+.side-group-label{font-size:10px;letter-spacing:1.2px;font-weight:800;color:#89877e;padding:0 12px;margin-bottom:9px}
+.sidebar-links{display:grid;gap:5px}.side-link{display:flex;align-items:center;gap:11px;width:100%;border:0;border-radius:8px;background:transparent;color:#51554e;padding:12px 11px;text-align:left;font-size:12.5px;font-weight:660;min-height:43px}
+.side-link:hover{background:#f2eee7}.side-link.active{background:#f4eae2;color:#753f2a;box-shadow:inset 3px 0 0 var(--accent)}.side-icon{font-size:19px;width:23px;text-align:center;line-height:1}
+.sidebar-foot{margin-top:auto;padding:20px 10px 4px;border-top:1px solid var(--line);font-size:11px;color:#55564f}.sidebar-foot small{display:block;color:var(--muted);margin-top:4px}.status-dot{display:inline-block;background:#486b57;border-radius:50%;width:7px;height:7px;margin-right:5px}
+.workspace-main{min-width:0;padding:28px clamp(20px,3.2vw,46px) 58px;max-width:1500px;width:100%}.workspace-header{display:flex;justify-content:space-between;gap:12px;align-items:start;margin:0 0 23px}.workspace-header h1{margin:6px 0 7px;font-size:clamp(25px,2.65vw,35px)}.workspace-header .lead{margin:0}.workspace-mark{font-size:10px;letter-spacing:1px;color:#6f584a;border:1px solid #e8dfd4;border-radius:50px;padding:8px 11px;white-space:nowrap;background:#fffaf4}
+.legacy-tabs{display:none!important}.stats{margin-top:4px}.tab-panel:not([hidden]){display:block}.panel-gap{margin-top:15px}.search-card{margin-bottom:20px}.content>.report-top{margin-top:12px}
+.saved-list{display:grid;gap:10px;margin-top:14px}.saved-entry{border:1px solid var(--line);border-radius:9px;padding:13px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}.saved-entry strong{display:block}.saved-entry small{color:var(--muted)}.saved-buttons{display:flex;gap:7px;flex-wrap:wrap}.saved-buttons button{margin:0}.empty-saved{background:var(--soft);padding:18px;border-radius:7px;color:var(--muted);font-size:13px}
+@media(max-width:1050px){.app-frame{grid-template-columns:205px minmax(0,1fr)}.workspace-main{padding:26px 22px}.search-grid{grid-template-columns:1fr 190px}.search-grid .primary{grid-column:1/-1}}
+@media(max-width:750px){.app-frame{display:block}.app-sidebar{position:static;height:auto;padding:12px 13px 9px;border-right:0;border-bottom:1px solid var(--line)}.sidebar-brand{padding:0 2px 10px;margin-bottom:9px}.side-group-label,.sidebar-foot{display:none}.sidebar-links{display:flex;overflow-x:auto;gap:6px;padding-bottom:3px;scrollbar-width:thin}.side-link{flex:0 0 auto;width:auto;padding:9px 11px;white-space:nowrap;min-height:39px}.side-link.active{box-shadow:inset 0 -3px 0 var(--accent)}.workspace-main{padding:20px 15px 46px}.workspace-mark{display:none}.workspace-header{margin-bottom:17px}.workspace-header h1{font-size:27px}}
+@media(max-width:580px){.search-grid{grid-template-columns:1fr}.search-grid .primary{grid-column:1}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.decision-evidence{grid-template-columns:1fr 1fr}}
+/* Category Intelligence: restrained editorial styling, matching the current UI */
+.category-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(220px,.7fr);gap:16px}
+.category-leader{padding:17px 18px;border:1px solid var(--line);background:#f7f6f1;border-radius:9px;margin-bottom:13px}
+.category-leader .category-name{font-size:19px;font-weight:750;letter-spacing:-.4px;margin:4px 0}
+.category-path{color:var(--muted);font-size:12px;overflow-wrap:anywhere}
+.category-list{display:grid;gap:13px}.category-item{display:grid;gap:5px}.category-item-top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px}.category-item-top span:first-child{font-weight:650;overflow-wrap:anywhere}.category-track{height:7px;border-radius:9px;background:#eae8e2;overflow:hidden}.category-fill{height:100%;background:#627a6c;border-radius:9px}
+.category-side{padding:17px;background:#f9f7f2;border:1px solid var(--line);border-radius:9px}.category-side strong{display:block;margin-bottom:8px;font-size:13px}.category-side p{font-size:12px;color:var(--muted);line-height:1.65;margin:0 0 12px}.category-side p:last-child{margin:0}
+.category-cell{max-width:165px;color:#555a52;font-size:12px}.category-unavailable{color:var(--muted);font-size:12px}
+@media(max-width:840px){.category-grid{grid-template-columns:1fr}}
+
+/* Tag Intelligence: directly observed seller tag counts and favorites coverage. */
+.tag-intel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.tag-intel-tools{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.tag-intel-tools label{font-size:11px;color:var(--muted);font-weight:700}
+.tag-intel-tools select{height:37px;max-width:260px;padding:0 10px;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--ink)}
+.tag-intel-meta{font-size:12px;color:var(--muted);margin:9px 0 15px}
+.tag-intel-table{width:100%;border-collapse:collapse;min-width:650px}
+.tag-intel-table th{font-size:11px;font-weight:750;color:#62645e;text-align:left;border-bottom:1px solid var(--line);padding:10px 12px;background:#f5f2ec;white-space:nowrap}
+.tag-intel-table td{padding:12px;border-bottom:1px solid #ebe8e2;font-size:12.5px;vertical-align:middle}
+.tag-intel-table tbody tr:last-child td{border-bottom:0}
+.tag-intel-table th:not(:first-child),.tag-intel-table td:not(:first-child){text-align:right}
+.tag-intel-table .tag-name{font-weight:700;overflow-wrap:anywhere}
+.tag-inline-track{display:inline-block;vertical-align:middle;width:70px;height:6px;background:#e9e6dd;border-radius:8px;margin-left:9px;overflow:hidden}
+.tag-inline-bar{display:block;height:100%;background:#667e6d;border-radius:8px}
+.tag-intel-caveat{font-size:11.5px;line-height:1.6;color:var(--muted);margin:12px 0 0}
+@media(max-width:650px){.tag-intel-head{display:block}.tag-intel-tools{margin-top:12px}.tag-inline-track{width:44px}}
+
+/* v5 visual refinement: grounded, readable seller research workspace. */
+:root{--paper:#f5f4f0;--white:#ffffff;--ink:#212b27;--muted:#606a63;--line:#dce2db;--accent:#355e4a;--accent-dark:#274835;--accent-wash:#e8f0e9;--sage:#355e4a;--soft:#f0f3ed;--shadow:0 3px 18px rgba(24,40,32,.035)}
+body{font-size:14px;background:var(--paper)}
+.app-sidebar{background:#fff;border-right-color:#d9e0d9;box-shadow:3px 0 19px rgba(32,47,37,.018)}
+.brand-icon{background:#315640;border-radius:11px;box-shadow:0 5px 15px rgba(37,76,53,.12)}
+.sidebar-brand{padding-bottom:23px;margin-bottom:22px}
+.side-link{border-radius:9px;font-weight:670;transition:background .14s ease,color .14s ease}
+.side-link.active{color:#274d36;background:#e9f1e9;box-shadow:inset 3px 0 0 #427759}
+.side-link:hover{background:#f0f5ef}
+.workspace-main{padding-top:32px}
+.workspace-header{margin-bottom:25px}.workspace-header h1{letter-spacing:-1.12px;font-weight:760}
+.workspace-mark{color:#41634e;background:#f8fbf7;border-color:#dce6dc}
+.card{border-color:#dce1dc;box-shadow:0 3px 16px rgba(23,45,32,.026)}
+.search-card{border:1px solid #d6dfd5;box-shadow:0 9px 28px rgba(27,45,32,.036);background:#fff;padding:25px 25px 21px}
+.field input:focus,.field select:focus,.search-small:focus{border-color:#72937c}
+.primary{background:#355e4a;border-color:#355e4a;box-shadow:0 3px 9px rgba(40,82,56,.10)}
+.primary:hover{background:#274835}
+.stat{border-radius:11px}.stat .number{font-size:30px}.stat .context{line-height:1.45}
+.research-table th,.tag-intel-table th{background:#f2f5f0;color:#59665b}
+.research-table tbody tr:hover{background:#f7faf6}
+.category-leader{background:#f2f6f0;border-color:#dce7da}
+.category-fill,.tag-inline-bar{background:#567f63}
+.tag-intel-table tbody tr:hover{background:#f8faf7}
+.eyebrow{color:#4a7358}
+.data-status{display:inline-flex;gap:7px;align-items:center;border:1px solid #e1e5dc;background:#f7f8f5;color:#5e665d;border-radius:99px;padding:5px 9px;font-size:11px;font-weight:700;white-space:nowrap}
+.data-status::before{content:'';height:7px;width:7px;background:#9ba69a;border-radius:50%}
+.demand-shell{margin-bottom:17px;overflow:hidden}
+.demand-heading{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:17px}
+.demand-heading h3{font-size:17px;letter-spacing:-.3px}
+.demand-heading .kicker{font-size:12px;max-width:72ch}
+.demand-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.demand-kpi{border:1px solid #e0e5dd;background:#fafbf8;padding:15px 15px 13px;border-radius:9px;min-width:0}
+.demand-kpi-label{font-size:11px;letter-spacing:.15px;color:#626c63;line-height:1.5}
+.demand-kpi-value{font-size:23px;font-weight:750;letter-spacing:-.65px;line-height:1.5;margin-top:4px}
+.demand-kpi-sub{font-size:10.5px;color:#747f75;line-height:1.45}
+.demand-lower{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(225px,.8fr);gap:12px;margin-top:13px}
+.demand-blank{min-height:165px;display:flex;align-items:center;gap:16px;padding:20px;border:1px dashed #cfdacf;background:linear-gradient(145deg,#fcfdfb,#f5f8f3);border-radius:9px}
+.demand-blank-icon{width:52px;height:52px;display:grid;place-items:center;flex-shrink:0;border:1px solid #d8e3d8;background:#fff;border-radius:12px;color:#5e846a}
+.demand-blank strong{display:block;font-size:13px;margin-bottom:5px}
+.demand-blank p{margin:0;font-size:12px;color:var(--muted);line-height:1.65;max-width:53ch}
+.demand-note{border:1px solid #e2e7df;background:#f7f9f5;border-radius:9px;padding:17px;font-size:12px;color:#576259;line-height:1.65}
+.demand-note strong{display:block;color:#2c4535;margin-bottom:6px;font-size:12.5px}
+.demand-note p{margin:0 0 8px}.demand-note p:last-child{margin:0}
+@media(max-width:1020px){.demand-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.demand-lower{grid-template-columns:1fr}}
+@media(max-width:600px){.demand-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.demand-kpi{padding:12px}.demand-kpi-value{font-size:20px}.demand-blank{min-height:0;padding:16px;align-items:flex-start}.demand-blank-icon{width:39px;height:39px}.demand-heading{flex-wrap:wrap}.workspace-main{padding-top:19px}.search-card{padding:18px}}
+
+/* v5.1 — Related seller-phrase discovery. No demand/CTR inference. */
+.related-intel{margin-bottom:15px}
+.related-intel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.related-intel-head h3{font-size:17px;letter-spacing:-.25px}
+.related-intel-summary{font-size:12px;color:var(--muted);margin:12px 0 14px}
+.related-intel-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.related-intel-controls label{font-size:11.5px;font-weight:700;color:var(--muted)}
+.related-intel-controls select{height:36px;min-width:145px;border:1px solid var(--line);background:#fff;border-radius:7px;padding:0 9px;color:var(--ink)}
+.related-table{min-width:790px;width:100%;border-collapse:collapse}
+.related-table th{text-align:left;font-size:11px;background:#f2f5f0;color:#59665b;border-bottom:1px solid var(--line);padding:11px 12px;white-space:nowrap}
+.related-table td{border-bottom:1px solid #e9ede7;padding:12px;font-size:12.5px;vertical-align:middle}
+.related-table tbody tr:last-child td{border-bottom:0}
+.related-table tbody tr:hover{background:#f7faf6}
+.related-table th:not(:first-child):not(:last-child),.related-table td:not(:first-child):not(:last-child){text-align:right;font-variant-numeric:tabular-nums}
+.related-phrase{font-weight:700;max-width:300px;overflow-wrap:anywhere}
+.related-phrase small{display:block;font-size:10.5px;color:var(--muted);font-weight:450;margin-top:3px}
+.related-run{border:1px solid #cddbd0;background:#f5faf4;color:#325941;padding:6px 9px;border-radius:7px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.related-run:hover{background:#e6f1e7}
+.related-intel-foot{font-size:11.5px;color:var(--muted);margin:12px 0 0;line-height:1.65}
+@media(max-width:600px){.related-intel-head{display:block}.related-intel-controls{margin-top:11px}}
+.listing-thumb{width:56px;height:56px;object-fit:cover;border-radius:6px;display:block}
+.listing-photo{width:68px}
+.lever-list{display:grid;gap:10px;margin-top:14px}
+.lever-item{padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#fbfaf6}
+.lever-item strong{display:block;font-size:13px;margin-bottom:3px}
+.lever-item p{margin:0;color:var(--muted);font-size:12.5px;line-height:1.6}
+</style>
+</head>
+<body>
+
+<div class="app-frame"><aside aria-label="Main navigation" class="app-sidebar">
+<div class="sidebar-brand"><span aria-hidden="true" class="brand-icon">NI</span><span><strong>Niche Intelligence</strong><small>Etsy seller research</small></span></div>
+<div class="side-group-label">WORKSPACE</div>
+<nav aria-label="Research tools" class="sidebar-links">
+<button aria-current="page" class="side-link active" data-view="overview" type="button"><span class="side-icon">▦</span>Dashboard</button>
+<button class="side-link" data-view="keywords" type="button"><span class="side-icon">⌕</span>Keyword Research</button>
+<button class="side-link" data-view="competitors" type="button"><span class="side-icon">▤</span>Competitor Research</button>
+<button class="side-link" data-view="opportunities" type="button"><span class="side-icon">◎</span>Niche Opportunities</button>
+<button class="side-link" data-view="actions" type="button"><span class="side-icon">↗</span>Store Improvement</button>
+<button class="side-link" data-view="saved" type="button"><span class="side-icon">▣</span>Saved Research</button>
+</nav>
+<div class="sidebar-foot"><span class="status-dot"></span>Local research workspace <small>No buyer-volume claims</small></div>
+</aside><main class="workspace-main"><div class="workspace-header"><div><div class="eyebrow">SELLER INTELLIGENCE</div><h1 id="workspace-heading">Research dashboard</h1><p class="lead" id="workspace-description">Understand competitor listings, prices and the evidence behind your next move.</p></div><span class="workspace-mark">ETSY RESEARCH</span></div>
+
+
+
+<section aria-label="Keyword research search" class="card search-card">
+<form id="search-form">
+<div class="search-grid">
+<div class="field"><label for="keyword">Etsy keyword</label><input autocomplete="off" id="keyword" maxlength="100" minlength="2" name="keyword" placeholder="Enter your keyword..." required=""/></div>
+<div class="field"><label for="buyer-country">Buyer market</label><select id="buyer-country" name="buyer_country"><option value="">Global</option><option value="US">United States</option><option value="GB">United Kingdom</option><option value="CA">Canada</option><option value="AU">Australia</option><option value="DE">Germany</option><option value="FR">France</option><option value="IT">Italy</option><option value="ES">Spain</option><option value="NL">Netherlands</option><option value="BE">Belgium</option><option value="AT">Austria</option><option value="CH">Switzerland</option><option value="SE">Sweden</option><option value="DK">Denmark</option><option value="NO">Norway</option><option value="FI">Finland</option><option value="IE">Ireland</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="JP">Japan</option><option value="IN">India</option><option value="PK">Pakistan</option><option value="NZ">New Zealand</option><option value="MX">Mexico</option><option value="BR">Brazil</option><option value="TR">Türkiye</option><option value="AE">United Arab Emirates</option><option value="SG">Singapore</option></select></div>
+<button class="primary" id="research-button" type="submit">Research keyword</button>
+</div>
+</form>
+<p class="subtext">Explore real Etsy listings, seller insights and category patterns. <span class="muted">Category and market coverage details appear in the report.</span></p>
+<p aria-live="polite" class="status-line" id="search-status" role="status">Ready to research.</p>
+</section>
+<div class="card welcome" id="welcome"><h2>Research a keyword to get started</h2><p>Enter a search phrase above to explore a real Etsy listing sample. We'll show verified observations first and explain what they can—and cannot—tell you.</p></div>
+<div aria-live="polite" class="content" id="content">
+<div class="report-top"><div><span class="eyebrow">Market overview</span><h2 id="report-keyword"></h2><p class="meta" id="snapshot-meta"></p></div><span class="small-pill">Live Etsy listing sample</span></div>
+<section aria-label="Research snapshot metrics" class="stats">
+<div class="card stat"><div class="number" id="metric-sample">—</div><div class="lbl">Listings analyzed</div><div class="context">Unique listing records</div></div>
+<div class="card stat"><div class="number" id="metric-shops">—</div><div class="lbl">Unique shops</div><div class="context">Within this sample</div></div>
+<div class="card stat"><div class="number" id="metric-matches">—</div><div class="lbl">Etsy search matches</div><div class="context">API matching count; before currency filtering</div></div>
+<div class="card stat"><div class="number" id="metric-currencies">—</div><div class="lbl">Price currencies</div><div class="context">Prices grouped by currency</div></div>
+</section>
+<nav aria-label="Research sections" class="toolbar legacy-tabs" role="tablist">
+<button aria-controls="panel-overview" aria-selected="true" class="tab" data-tab="overview" id="tab-overview" role="tab" type="button">Overview</button>
+<button aria-controls="panel-competitors" aria-selected="false" class="tab" data-tab="competitors" id="tab-competitors" role="tab" type="button">Competitors</button>
+<button aria-controls="panel-keywords" aria-selected="false" class="tab" data-tab="keywords" id="tab-keywords" role="tab" type="button">Keyword patterns</button>
+<button aria-controls="panel-actions" aria-selected="false" class="tab" data-tab="actions" id="tab-actions" role="tab" type="button">Your next moves</button>
+</nav>
+<section aria-labelledby="tab-overview" class="tab-panel" id="panel-overview" role="tabpanel">
+<section class="card section-card" id="category-analysis" aria-label="Etsy category analysis" style="margin-bottom:15px">
+ <div class="section-head"><div><h3>Etsy categories</h3><p class="kicker">Where matching listings are currently categorized on Etsy.</p></div><span class="small-pill" id="category-coverage">Category data</span></div>
+ <div id="category-content" class="category-grid"><p class="muted micro">Category information appears with your research.</p></div>
+</section>
+<div class="two-col">
+<section class="card section-card"><div class="section-head"><div><h3 id="price-chart-heading">Prices in your Etsy results</h3><p class="kicker" id="price-chart-help">Start with all currencies, then choose one for accurate price ranges.</p></div><div><label class="filter-label" for="price-currency">Price view</label><select class="moneyselect" id="price-currency"></select></div></div><div id="price-chart"></div><p class="signpost" id="price-note"></p></section>
+<section class="card section-card"><div class="section-head"><div><h3>What this research tells you</h3><p class="kicker">Findings based on the listings collected, with a practical action for each.</p></div></div><ul class="insight-list" id="insight-list"></ul></section>
+</div>
+<section aria-label="Early product-match evidence" class="card section-card panel-gap" hidden="" id="match-audit-panel">
+<div class="section-head"><div><h3>Keyword-to-product match audit</h3><p class="kicker">A first-pass check of listing titles and seller tags; this is NOT verified direct competition or ranking difficulty.</p></div><span class="small-pill">Early evidence</span></div>
+<div class="micro" id="match-audit-summary"></div>
+<div class="micro muted" id="match-audit-details"></div>
+</section>
+
+<details id="research-methodology" aria-label="Data reliability and coverage" class="card section-card panel-gap research-confidence"><summary class="method-summary">How reliable is this research? <span class="muted micro">See what the numbers cover</span></summary><div class="method-body"><p class="micro muted">Use these details to compare like-for-like products and avoid drawing the wrong conclusion from a small search sample.</p><div class="quality"><b>Etsy listings checked</b><span id="scope-sample">—</span></div><div class="quality"><b>Buyer market selected</b><span id="scope-buyer-country">Global search · no buyer-country restriction</span></div><div class="quality"><b>What this helps with</b><span>Compare products, prices, seller tags and shop history</span></div><div class="quality"><b>What needs more evidence</b><span>Exact direct competitors, buyer searches and ranking difficulty</span></div><p class="micro muted">Shop sales and reviews are shop-wide totals, not sales or reviews for an individual listing.</p></div></details>
+</section>
+<section aria-labelledby="tab-competitors" class="tab-panel" hidden="" id="panel-competitors" role="tabpanel">
+<section class="card section-card"><div class="section-head"><div><h3>Etsy listings</h3><p class="kicker">Filter the collected Etsy results. Verify the product format before treating listings as direct competitors.</p></div><span class="small-pill">10 per page</span></div><div class="table-controls"><div class="filter-field filter-query"><label for="listing-filter">Search listings</label><input aria-label="Search within collected listings" class="search-small" id="listing-filter" placeholder="Search by listing title or shop..."/></div><div class="filter-field"><label for="listing-currency">Currency</label><select class="select-small" id="listing-currency"></select></div><div class="filter-field"><label for="listing-category">Category</label><select class="select-small" id="listing-category"><option value="all">All categories</option></select></div><div class="filter-field"><label for="listing-sort">Sort results</label><select class="select-small" id="listing-sort"><option value="default">Etsy relevance</option><option value="favorites">Most favorites</option><option value="shop_sales">Most shop lifetime sales</option><option value="reviews">Most shop reviews</option><option value="age">Oldest shops</option><option value="rating">Highest shop rating</option></select></div><div class="filter-field"><label for="price-sort">Price order</label><select class="select-small" id="price-sort"><option value="none">Default</option><option value="asc">Low to high</option><option value="desc">High to low</option></select></div></div><p class="filter-hint" id="price-sort-hint">Choose low-to-high or high-to-low. With All currencies, prices are sorted within separate currency groups.</p>
+<div class="enrichment-tools" id="enrichment-tools" aria-label="Automatic shop enrichment status"><div class="micro muted" id="shop-coverage-info" role="status" aria-live="polite">Seller details appear automatically after the products.</div></div>
+<div class="table-scroller"><table class="research-table"><thead><tr><th>Photo</th><th style="width:27%">Listing</th><th>Category</th><th>Type</th><th>Price</th><th>Favorites</th><th>Shop</th><th>Shop age</th><th>Shop reviews</th><th>Rating</th><th>Shop sales (lifetime)</th></tr></thead><tbody id="listing-body"></tbody></table></div>
+<div class="table-foot"><span class="micro muted" id="pagination-info"></span><div><button class="secondary" id="prev-page" type="button">Previous</button> <button class="secondary" id="next-page" type="button">Next</button></div></div><p class="signpost">Shop age, reviews, rating and lifetime sales describe the shop—not sales of this individual product.</p></section>
+</section>
+<section aria-labelledby="tab-keywords" class="tab-panel" hidden="" id="panel-keywords" role="tabpanel">
+
+<section class="card section-card demand-shell" id="demand-intelligence" aria-label="Keyword demand and trends">
+ <div class="demand-heading"><div><h3>Keyword demand &amp; trends</h3><p class="kicker">Buyer-search metrics and history are kept separate from Etsy listing and seller-tag evidence.</p></div><span class="data-status" id="demand-source-status">Source not connected</span></div>
+ <div class="demand-kpis" aria-label="Keyword demand metrics">
+  <div class="demand-kpi"><div class="demand-kpi-label">Monthly Etsy searches</div><div class="demand-kpi-value" id="demand-searches">—</div><div class="demand-kpi-sub">Verified source required</div></div>
+  <div class="demand-kpi"><div class="demand-kpi-label">Monthly Etsy clicks</div><div class="demand-kpi-value" id="demand-clicks">—</div><div class="demand-kpi-sub">Not derived from listings</div></div>
+  <div class="demand-kpi"><div class="demand-kpi-label">Click-through rate</div><div class="demand-kpi-value" id="demand-ctr">—</div><div class="demand-kpi-sub">Requires clicks and searches</div></div>
+  <div class="demand-kpi"><div class="demand-kpi-label">Historical trend</div><div class="demand-kpi-value" id="demand-trend">—</div><div class="demand-kpi-sub">Monthly history unavailable</div></div>
+ </div>
+ <div class="demand-lower">
+  <div class="demand-blank" role="status"><div class="demand-blank-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 23V5M3 23h22M7 18l5-6 5 3 7-10"/><path d="M20 5h4v4"/></svg></div><div><strong>Trend chart awaiting an authorized data source</strong><p>No graph is drawn from listing matches or favorites. When monthly buyer-search observations are available, the history can be displayed here with source, market, and time period.</p></div></div>
+  <div class="demand-note"><strong>Reading this research correctly</strong><p><b>Listing matches</b> mean competing search results, not buyer searches.</p><p><b>Seller tags</b> describe seller wording, not confirmed buyer demand.</p><p id="demand-market-note">Market: Global · awaiting a buyer-search provider.</p></div>
+ </div>
+</section>
+
+<section class="card section-card related-intel" id="related-intelligence" aria-label="Related Keyword Discovery">
+ <div class="related-intel-head"><div><h3>Related keyword ideas</h3><p class="kicker">Discover seller-used phrases from listing titles and tags in this exact research sample.</p></div><div class="related-intel-controls"><label for="related-order">Sort by</label><select id="related-order"><option value="listings">Most listings</option><option value="shops">Most shops</option><option value="favorites">Median favorites</option></select></div></div>
+ <p class="related-intel-summary" id="related-intel-summary">Research a keyword to explore seller phrases.</p>
+ <div id="related-intel-output" class="table-scroller"><div class="empty">No related phrases loaded yet.</div></div>
+ <p class="related-intel-foot">Seller phrases are keyword ideas, not measured buyer searches, verified direct competitors or ranking difficulty. A phrase may appear in different product types. Clicking “Research” starts a separate Etsy search using your selected buyer market.</p>
+</section>
+<section class="card section-card" id="tag-intelligence" aria-label="Tag Intelligence" style="margin-bottom:15px">
+ <div class="tag-intel-head"><div><h3>Tag Intelligence</h3><p class="kicker">Observed seller tags and listing favorites from this Etsy search sample.</p></div><div class="tag-intel-tools"><label for="tag-intel-scope">Analyze tags from</label><select id="tag-intel-scope"><option value="all">All sampled listings</option><option value="strong">Strong title matches</option></select></div></div>
+ <p class="tag-intel-meta" id="tag-intel-meta">Research a keyword to see tag observations.</p>
+ <div id="tag-intel-output" class="table-scroller"><div class="empty">No tag observations loaded yet.</div></div>
+ <p class="tag-intel-caveat">Listing favorites are observed engagement at collection time, <strong>not</strong> sales or conversions caused by a tag. Strong title matches are lexical checks, not confirmed direct competitors. Tag frequency is <strong>not</strong> Etsy buyer search volume. Category and product format must be checked before choosing tags.</p>
+</section>
+<section class="card section-card" style="margin-bottom:15px"><h3>Keyword phrases found in listing titles</h3><p class="kicker">Which phrases are repeated across the sampled listing titles? This is seller language research, not Etsy buyer search volume.</p><div id="title-phrase-chart"></div><p class="micro muted" id="title-phrase-note"></p></section><div class="two-col"><section class="card section-card"><h3>Seller tag patterns</h3><p class="kicker">Real listing tag frequency — useful phrases to review for your product.</p><div id="tag-chart"></div></section><section class="card section-card"><h3>How to use these tags</h3><p class="micro">Use recurring tags as ideas, then check they match your exact product and buyer. Popular seller phrasing is not a count of buyer searches.</p><p class="micro"><strong>Practical use: </strong>Choose 3–5 relevant phrases, write a clear human-readable title, and compare your listing performance over time.</p><div class="action-callout" id="tag-summary"></div></section></div></section>
+<section aria-label="Niche opportunities" class="tab-panel" hidden="" id="panel-opportunities" role="tabpanel"><section aria-label="Opportunity assessment" class="card section-card panel-gap"><div class="section-head"><div><h3>What does the competition look like?</h3><p class="kicker">Evidence from sampled shops · ranking assessment requires direct-product validation</p></div><span class="small-pill" id="outlook-badge">Evidence check</span></div><div class="decision-main" id="decision-summary">Checking available competitor signals…</div><p class="micro muted" id="outlook-explanation">Traffic-light ratings require validated comparison and demand evidence. Until then, this report shows observed facts and a practical test, not a guessed ranking score.</p><div class="decision-evidence" id="decision-evidence"></div><div class="lever-list" id="ranking-levers"></div><div class="action-callout"><strong>What you can do next</strong><p id="decision-action"></p><div class="evidence-links" id="evidence-links"></div><button class="secondary" id="view-action-plan" type="button">View step-by-step test plan</button></div><p class="micro muted">Verdict is based on observed competition in this sample (reported matches, title matches, shop strength). Buyer-search demand is not verified yet — volume/KD source still needed.</p></section></section><section aria-labelledby="tab-actions" class="tab-panel" hidden="" id="panel-actions" role="tabpanel"><div class="card section-card"><div class="section-head"><div><h3>Your listing improvement plan</h3><p class="kicker" id="plan-subtitle">Use actual similar listings to decide what to test, rather than following generic advice.</p></div></div><ol class="step-list" id="action-steps"></ol><div class="action-callout"><strong>How to tell if it helped</strong><p>Record visits, favorites, orders and conversion rate before and after your test. Compare a meaningful period, note other changes, and do not treat one short-term jump as proof.</p></div></div></section><section aria-label="Saved research" class="tab-panel" hidden="" id="panel-saved" role="tabpanel">
+<section class="card section-card"><div class="section-head"><div><h3>Your saved research</h3><p class="kicker">Save a report on this computer and reopen it without another API request. Saved only in this browser.</p></div><button class="secondary" id="save-research" type="button">Save current research</button></div>
+<p class="micro muted" id="saved-status" role="status">No saved report selected.</p><div class="saved-list" id="saved-list"></div>
+<p class="signpost">Browser storage is local to this browser profile. Clearing site data deletes these snapshots; do not use it as a permanent backup.</p>
+</section></section>
+</div>
+<footer class="footer">Niche Intelligence · Research, test, improve</footer>
+</main></div>
+<script>
+'use strict';
+const state={data:null,tab:'overview',page:0};
+
+const $=id=>document.getElementById(id);
+const nf=new Intl.NumberFormat('en-US',{maximumFractionDigits:0});
+function n(v){return (typeof v==='number'&&Number.isFinite(v))?nf.format(v):'—'}
+function txt(id,value){$(id).textContent=String(value)}
+function node(tag,text,className){const el=document.createElement(tag);if(text!==undefined)el.textContent=String(text);if(className)el.className=className;return el}
+function safeString(value){return typeof value==='string'?value:''}
+function currency(value){return /^[A-Z]{3}$/.test(value||'')?value:'Unknown'}
+function numeric(value){return typeof value==='number'&&Number.isFinite(value)?value:null}
+function formatAge(x){const v=numeric(x.shop_age_years);if(v===null||v<0)return '—';if(v<1)return `${Math.max(0,Math.round(v*12))} mo`;return `${v.toFixed(1)} yr`}
+function formatRating(x){const r=numeric(x.shop_rating);const count=numeric(x.shop_review_count);if(r===null||r<=0||r>5||count===0)return '—';return `${r.toFixed(2)}/5`}
+function formatMoney(value,code){
+ if(value===null||!Number.isFinite(value))return '—';
+ const prefix={USD:'$',EUR:'€',GBP:'£',CAD:'CA$',AUD:'A$',NZD:'NZ$',HKD:'HK$',SGD:'S$',INR:'₹',PKR:'Rs ',JPY:'¥',CNY:'CN¥',MXN:'MX$',BRL:'R$',TRY:'₺',AED:'AED '};
+ const sign=prefix[code];const amount=value.toLocaleString('en-US',{minimumFractionDigits:code==='JPY'?0:2,maximumFractionDigits:2});
+ return sign?sign+amount:`${amount} ${code}`;
+}
+function formatPrice(x){return formatMoney(numeric(x.price),currency(x.currency))}
+function tab(name){
+ state.tab=name;
+ document.querySelectorAll('.tab').forEach(x=>{const on=x.dataset.tab===name;x.setAttribute('aria-selected',String(on));x.tabIndex=on?0:-1});
+ document.querySelectorAll('.tab-panel').forEach(x=>{x.hidden=x.id!==`panel-${name}`});
+ document.querySelectorAll('.side-link').forEach(x=>{const on=x.dataset.view===name;x.classList.toggle('active',on);if(on)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current')});
+ const names={overview:['Research dashboard','Your Etsy market snapshot, pricing patterns and key findings.'],competitors:['Competitor research','Inspect real Etsy listings and compare shops with useful filters.'],keywords:['Keyword research','Explore seller tag patterns from real listings, not invented search volume.'],opportunities:['Niche opportunities','Understand what the evidence says before launching a product.'],actions:['Store improvement','A practical listing experiment and a way to measure the result.'],saved:['Saved research','Reopen research snapshots you explicitly saved on this browser.']};
+ const info=names[name]||names.overview;txt('workspace-heading',info[0]);txt('workspace-description',info[1]);
+ const activeNav=document.querySelector('.side-link.active'),navStrip=document.querySelector('.sidebar-links');if(activeNav&&navStrip&&window.innerWidth<=750){navStrip.scrollLeft=Math.max(0,activeNav.offsetLeft-navStrip.offsetLeft-12)}
+ document.body.classList.toggle('view-saved',name==='saved');
+ if(name==='saved'){
+  $('content').classList.add('visible');$('welcome').hidden=true;renderSavedResearch();
+ }else if(!state.data){
+  $('content').classList.remove('visible');$('welcome').hidden=false;
+ }
+}
+
+document.querySelectorAll('.tab').forEach(x=>{x.addEventListener('click',()=>tab(x.dataset.tab));x.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const tabs=[...document.querySelectorAll('.tab')];const i=tabs.indexOf(x);const next=e.key==='Home'?0:e.key==='End'?tabs.length-1:e.key==='ArrowRight'?(i+1)%tabs.length:(i+tabs.length-1)%tabs.length;tab(tabs[next].dataset.tab);tabs[next].focus()})});
+function setStatus(msg,cls=''){txt('search-status',msg);$('search-status').className=`status-line ${cls}`}
+function currencies(){const counts=new Map();for(const x of state.data.listings){if(numeric(x.price)===null)continue;const c=currency(x.currency);if(c==='Unknown')continue;counts.set(c,(counts.get(c)||0)+1)}return [...counts.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]))}
+function buildCurrencyOptions(){
+ const cs=currencies(),price=$('price-currency'),listing=$('listing-currency');
+ price.replaceChildren(new Option(state.data.buyer_country?'All currencies · selected market':'Global · all currencies','all'));
+ listing.replaceChildren(new Option('All currencies','all'));
+ for(const [code,count] of cs){price.add(new Option(`${code} · ${n(count)} listings`,code));listing.add(new Option(code,code))}
+ price.value=(state.data.listing_currency_filter && cs.some(([c])=>c===state.data.listing_currency_filter))?state.data.listing_currency_filter:'all';price.disabled=!cs.length;
+}
+function barRow(label,count,max,kind=''){const row=node('div',undefined,'barrow');const track=node('div',undefined,'bar-track');const bar=node('div',undefined,`bar-fill ${kind}`);bar.style.width=(max>0?100*count/max:0)+'%';track.append(bar);row.append(node('span',label),track,node('span',n(count),'num'));return row}
+function priceChart(){
+ const out=$('price-chart');out.replaceChildren();if(!state.data)return;
+ const c=$('price-currency').value,cs=currencies();
+ if(c==='all'){
+  txt('price-chart-heading',state.data.buyer_country?'Price overview · selected market':'Global price overview');
+  txt('price-chart-help','How many collected listings use each currency. Select one currency to compare price ranges.');
+  if(!cs.length){out.append(node('p','No listing prices available.','muted'));txt('price-note','');return}
+  const max=Math.max(...cs.map(x=>x[1]),1);
+  for(const [code,count] of cs)out.append(barRow(code,count,max));
+  txt('price-note',`${n(cs.reduce((a,[,count])=>a+count,0))} listings with prices across ${n(cs.length)} currencies. These bars compare listing counts, not price amounts. No conversion has been applied.`);
+  return;
+ }
+ txt('price-chart-heading',`Price ranges · ${c}`);
+ txt('price-chart-help',state.data.requested_display_currency===c?'Prices originally listed in the selected market currency; no exchange-rate conversion. Compare similar product types.':'Listed prices for one currency. Compare the same product types before setting your price.');
+ const values=state.data.listings.filter(x=>currency(x.currency)===c&&numeric(x.price)!==null&&x.price>=0).map(x=>x.price);
+ if(!values.length){out.append(node('p','No listing prices for this currency.','muted'));txt('price-note','');return}
+ values.sort((a,b)=>a-b);const maxVal=values.at(-1);const typicalMax=values[Math.min(values.length-1,Math.floor(values.length*0.9))];
+ const rawStep=Math.max(typicalMax/4,.01),magnitude=Math.pow(10,Math.floor(Math.log10(rawStep)));
+ const step=([1,2,5,10].find(v=>v*magnitude>=rawStep)||10)*magnitude,bins=[0,0,0,0,0];
+ for(const v of values)bins[Math.min(4,Math.floor(v/step))]++;
+ const denom=Math.max(...bins,1),fmt=v=>Number.isInteger(v)?String(v):v.toFixed(2);
+ bins.forEach((count,i)=>out.append(barRow(i===4?`${fmt(step*4)}+`:`${fmt(i*step)}–${fmt((i+1)*step)}`,count,denom)));
+ txt('price-note',`${n(values.length)} Etsy listings priced in ${c}. Observed range: ${formatMoney(values[0],c)}–${formatMoney(maxVal,c)}. Different product formats may be mixed.`);
+}
+function titlePhraseChart(){
+ const out=$('title-phrase-chart');out.replaceChildren();
+ if(!state.data)return;
+ const counts=new Map(),shopLists=new Map();
+ for(const x of state.data.listings){
+  const words=(safeString(x.title).toLocaleLowerCase().match(/[\p{L}\p{N}]+/gu)||[]).filter(w=>w.length>2);
+  const phrases=new Set();
+  for(let i=0;i<words.length-1;i++){if(words[i]!==words[i+1])phrases.add(words[i]+' '+words[i+1])}
+  for(const phrase of phrases){counts.set(phrase,(counts.get(phrase)||0)+1);if(!shopLists.has(phrase))shopLists.set(phrase,new Set());if(x.shop_id!==null&&x.shop_id!==undefined)shopLists.get(phrase).add(x.shop_id)}
+ }
+ const top=[...counts].filter(([t,c])=>c>=2).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,8);
+ if(!top.length){out.append(node('p','No repeated two-word title phrases in this sample.','muted'));txt('title-phrase-note','');return}
+ const max=top[0][1];for(const [phrase,count] of top){out.append(barRow(phrase,count,max));}
+ txt('title-phrase-note',`Counts show unique listing titles containing each phrase (up to ${n(state.data.listings.length)} sampled listings). These are not Etsy searches or ranking opportunities; use the Competitors workspace to check buyer intent.`);
+}
+
+// Uses the real backend competitor_evidence contract. No inferred demand, sales or KD.
+
+// Related seller-phrase evidence from the current backend cohort, no extra fetch.
+function renderRelatedKeywords(){
+ const out=$('related-intel-output'),summary=$('related-intel-summary');out.replaceChildren();
+ const d=state.data||{},e=d.related_keywords;
+ if(!e||e.method!=='offline_seller_phrase_observations_v1'||!Array.isArray(e.suggestions)){
+  summary.textContent='Related phrase observations are not included in this report.';
+  out.append(node('div','Run a new search with the updated backend. Older saved reports may not include related phrases.','empty'));
+  return;
+ }
+ const count=Number.isInteger(e.sampled_unique)?e.sampled_unique:(Array.isArray(d.listings)?d.listings.length:0);
+ const all=e.suggestions.filter(r=>r&&typeof r==='object'&&typeof r.phrase==='string'&&r.phrase.trim());
+ summary.textContent=`${n(all.length)} phrase ideas · ${n(count)} unique sampled listings · ${marketLabel(d)} buyer market · seller-language observations`;
+ if(!all.length){out.append(node('div','No repeated related phrases were found for this keyword in the current sample.','empty'));return;}
+ const order=$('related-order').value;
+ const v=(r,key)=>Number.isInteger(r[key])&&r[key]>=0?r[key]:0;
+ const fav=r=>numeric(r.median_listing_favorites);
+ const rows=all.slice().sort((a,b)=>{
+  if(order==='shops')return v(b,'unique_shops_with_ids')-v(a,'unique_shops_with_ids')||v(b,'listing_count')-v(a,'listing_count')||a.phrase.localeCompare(b.phrase);
+  if(order==='favorites')return (fav(b)??-1)-(fav(a)??-1)||v(b,'listing_count')-v(a,'listing_count')||a.phrase.localeCompare(b.phrase);
+  return v(b,'listing_count')-v(a,'listing_count')||v(b,'seller_tag_listing_count')-v(a,'seller_tag_listing_count')||a.phrase.localeCompare(b.phrase);
+ });
+ const table=node('table',undefined,'related-table'),thead=node('thead'),head=node('tr');
+ for(const heading of ['Seller phrase','Listings','Shops','In titles','In tags','Median favorites','Next step']){
+  const th=node('th',heading);th.scope='col';head.append(th);
+ }
+ thead.append(head);table.append(thead);
+ const tbody=node('tbody');
+ for(const r of rows){
+  const tr=node('tr'),phrase=node('td',undefined,'related-phrase');phrase.append(node('span',r.phrase),node('small','Etsy listing sample'));
+  const f=fav(r);const available=v(r,'listings_with_favorites');
+  const next=node('td'),button=node('button','Research','related-run');button.type='button';button.setAttribute('aria-label',`Research keyword ${r.phrase}`);
+  button.addEventListener('click',()=>{
+   $('keyword').value=r.phrase;
+   tab('keywords');
+   $('search-form').scrollIntoView({behavior:'smooth',block:'start'});
+   $('keyword').focus();
+   setStatus(`Ready to research “${r.phrase}” in ${marketLabel(d)}. Click Research keyword to fetch a new listing sample.`);
+  });
+  next.append(button);
+  tr.append(phrase,node('td',n(v(r,'listing_count'))),node('td',n(v(r,'unique_shops_with_ids'))),node('td',n(v(r,'title_phrase_listing_count'))),node('td',n(v(r,'seller_tag_listing_count'))),node('td',f===null?'—':`${new Intl.NumberFormat('en-US',{maximumFractionDigits:1}).format(f)} (${n(available)} records)`),next);
+  tbody.append(tr);
+ }
+ table.append(tbody);out.append(table);
+}
+$('related-order').addEventListener('change',()=>{if(state.data)renderRelatedKeywords()});
+
+function renderTagIntelligence(){
+ const out=$('tag-intel-output');out.replaceChildren();
+ const meta=$('tag-intel-meta');
+ const d=state.data||{},e=d.competitor_evidence;
+ if(!e||e.method!=='category_and_tag_observation_v1'){
+  meta.textContent='This report does not include Tag Intelligence evidence.';
+  out.append(node('div','Run a new search with the updated backend. Older browser-saved reports may not include these fields.','empty'));
+  return;
+ }
+ const strong=$('tag-intel-scope').value==='strong';
+ const key=strong?'top_seller_tags_strong_title_matches':'top_seller_tags_all_sample';
+ const rows=Array.isArray(e[key])?e[key].filter(x=>x&&typeof x==='object'&&typeof x.tag==='string'):[];
+ const sample=Number.isInteger(e.sampled_unique)&&e.sampled_unique>=0?e.sampled_unique:d.listings.length;
+ const count=strong&&Number.isInteger(e.strong_title_match_count)?e.strong_title_match_count:sample;
+ meta.textContent=`${n(count)} ${strong?'lexically strong title matches':'unique sampled listings'} · ${n(rows.length)} tags displayed · Counts refer to the selected sample, not all Etsy listings.`;
+ if(!rows.length){out.append(node('div','No valid seller tags available for this selection.','empty'));return}
+ const table=node('table',undefined,'tag-intel-table');
+ const thead=node('thead'),heading=node('tr');
+ for(const caption of ['Seller tag','Listings using tag','Share of sample','Favorites available','Median favorites']){const th=node('th',caption);th.scope='col';heading.append(th)}
+ thead.append(heading);table.append(thead);
+ const tbody=node('tbody'),max=Math.max(1,...rows.map(r=>Number.isInteger(r.listing_count)&&r.listing_count>=0?r.listing_count:0));
+ for(const r of rows){
+  const usage=Number.isInteger(r.listing_count)&&r.listing_count>=0?r.listing_count:null;
+  const coverage=Number.isInteger(r.listings_with_favorites)&&r.listings_with_favorites>=0?r.listings_with_favorites:null;
+  const fav=numeric(r.median_listing_favorites);
+  const tr=node('tr');const tag=node('td',undefined,'tag-name');tag.append(node('span',r.tag));
+  const use=node('td',usage===null?'—':n(usage));
+  if(usage!==null){const track=node('span',undefined,'tag-inline-track'),bar=node('span',undefined,'tag-inline-bar');bar.style.width=`${Math.min(100,100*usage/max)}%`;track.append(bar);use.append(track)}
+  tr.append(tag,use,node('td',usage!==null&&count>0?`${(100*usage/count).toFixed(1)}%`:'—'),node('td',coverage===null?'—':`${n(coverage)} / ${usage===null?'—':n(usage)}`),node('td',fav===null?'—':new Intl.NumberFormat('en-US',{maximumFractionDigits:1}).format(fav)));
+  tbody.append(tr);
+ }
+ table.append(tbody);out.append(table);
+}
+$('tag-intel-scope').addEventListener('change',()=>{if(state.data)renderTagIntelligence()});
+
+function tagsChart(){const out=$('tag-chart');out.replaceChildren();const counts=new Map();for(const x of state.data.listings){const tags=new Set((Array.isArray(x.tags)?x.tags:[]).filter(t=>typeof t==='string').map(t=>t.trim().toLocaleLowerCase()).filter(Boolean));for(const t of tags)counts.set(t,(counts.get(t)||0)+1)}const top=[...counts].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,8);if(!top.length){out.append(node('p','No tags available.','muted'));return}txt('tag-summary',top.length?`Most repeated seller tag in this sample is “${top[0][0]}”, used by ${n(top[0][1])} of ${n(state.data.listings.length)} sampled listings. It is a seller usage pattern, not buyer search frequency.`:'No recurring tags were found.');for(const [t,count] of top){const row=node('div',undefined,'barrow');row.style.gridTemplateColumns='minmax(90px,1.2fr) minmax(0,1fr) 35px';const track=node('div',undefined,'bar-track');const fill=node('div',undefined,'bar-fill sage');fill.style.width=(100*count/top[0][1])+'%';track.append(fill);row.append(node('span',t),track,node('span',n(count),'num'));out.append(row)}}
+// Category analysis uses the taxonomy assigned to each actual Etsy listing.
+// Distribution is calculated from the records currently displayed, not inferred from keywords.
+function listingCategory(x){
+ const id=x.taxonomy_id;
+ const categoryId=(typeof id==='number'&&Number.isInteger(id)&&id>0)?String(id):
+                  (typeof id==='string'&&/^[1-9][0-9]*$/.test(id)?id:null);
+ const path=safeString(x.category_path).trim();
+ const name=safeString(x.category_name).trim()||(path?path.split(/\s*>\s*/).at(-1).trim():'');
+ return {id:categoryId,name,path};
+}
+function categoryRows(){
+ if(!state.data)return [];
+ const map=new Map();
+ for(const x of state.data.listings){
+  const c=listingCategory(x);if(!c.id&&!c.path&&!c.name)continue;
+  const key=c.id?'id:'+c.id:'path:'+(c.path||c.name).toLocaleLowerCase();
+  if(!map.has(key))map.set(key,{...c,key,count:0});
+  const item=map.get(key);item.count++;if(!item.path&&c.path)item.path=c.path;if(!item.name&&c.name)item.name=c.name;
+ }
+ return [...map.values()].sort((a,b)=>b.count-a.count||(a.name||a.path).localeCompare(b.name||b.path));
+}
+function renderCategoryAnalysis(){
+ const box=$('category-content'),records=state.data.listings,rows=categoryRows();box.replaceChildren();
+ const known=rows.reduce((t,x)=>t+x.count,0);txt('category-coverage',`${n(known)} / ${n(records.length)} categorized`);
+ if(!known){const note=node('div',undefined,'category-side');note.append(node('strong','Category details unavailable'),node('p','Etsy category data is missing from this report. Run a fresh research search after installing the category collector.'));box.append(note);return}
+ const top=rows[0],total=records.length;
+ const main=node('div');const leader=node('div',undefined,'category-leader');
+ leader.append(node('div','MOST COMMON IN THIS SAMPLE','eyebrow'),node('div',top.name||top.path||'Unnamed Etsy category','category-name'));
+ if(top.path)leader.append(node('div',top.path.replace(/\s*>\s*/g,' → '),'category-path'));
+ leader.append(node('div',`${n(top.count)} of ${n(total)} sampled listings (${Math.round(top.count/total*100)}%).`,'micro muted'));main.append(leader);
+ const list=node('div',undefined,'category-list');for(const item of rows.slice(0,6)){
+  const row=node('div',undefined,'category-item'),head=node('div',undefined,'category-item-top');
+  head.append(node('span',item.name||item.path||'Unnamed category'),node('span',`${n(item.count)} · ${Math.round(item.count/total*100)}%`));
+  const track=node('div',undefined,'category-track'),bar=node('div',undefined,'category-fill');bar.style.width=`${Math.max(0,Math.min(100,100*item.count/total))}%`;track.append(bar);row.append(head,track);list.append(row);
+ }main.append(list);box.append(main);
+ const side=node('div',undefined,'category-side');side.append(node('strong','What this means'));
+ side.append(node('p',`${n(rows.length)} distinct categories appear in the sampled listings. ${n(total-known)} listings have no resolved category.`));
+ side.append(node('strong','Choosing your category'));
+ side.append(node('p','Choose the most specific accurate Etsy category for your actual product. The most common category in search results is not automatically the best category for your listing.'));
+ side.append(node('p','Category alone does not prove direct competition. Compare product type, format and buyer intent before evaluating a niche.'));
+ box.append(side);
+}
+function buildCategoryOptions(){
+ const picker=$('listing-category');picker.replaceChildren(new Option('All categories','all'));
+ for(const c of categoryRows())picker.add(new Option(`${c.name||c.path||'Category '+c.id} (${n(c.count)})`,c.key));
+ const uncategorized=state.data.listings.some(x=>{const c=listingCategory(x);return !c.id&&!c.path&&!c.name});
+ if(uncategorized)picker.add(new Option('Uncategorized','unknown'));
+ picker.value='all';
+}
+function insights(){
+ const out=$('insight-list');out.replaceChildren();const items=state.data.listings,cs=currencies();
+ const shops=new Set(items.map(x=>x.shop_id).filter(x=>x!==null&&x!==undefined)).size;
+ const reviewedShops=new Set(items.filter(x=>numeric(x.shop_review_count)>0).map(x=>x.shop_id)).size;
+ const top=cs[0];const topTags=countTags(items).slice(0,3);
+ const tagText=topTags.length?topTags.map(([name,count])=>`“${name}” (${n(count)})`).join(', '):'No repeated tags found';
+ const ideas=[
+  ['What is on Etsy',`${n(items.length)} listings from ${n(shops)} shops are in this search sample. Open comparable products before treating them as direct competitors.`],
+  ['Established shop presence',(state.data.research_stage==='listings_only'||state.data.shop_data_status==='partial')?'Shop profiles are incomplete. Missing review counts are unknown, not zero. Research continues automatically when possible.':`${n(reviewedShops)} unique shops in the sample have recorded reviews. Look at their customer feedback, product features, and offers for strengths a new seller may need to match.`],
+  ['What comparable products cost',top?`${n(top[1])} sample listings use ${top[0]}. Compare pricing only within the same currency AND product format.`:'No usable listing prices were reported.'],
+  ['Seller keyword ideas',`Frequent tags: ${tagText}. Treat these as descriptions sellers use, not validated buyer search demand.`]
+ ];
+ for(const [name,desc] of ideas){const li=node('li');li.append(node('strong',name),node('p',desc));out.append(li)}
+}
+function countTags(items){const counts=new Map();for(const x of items){const tags=new Set((Array.isArray(x.tags)?x.tags:[]).filter(t=>typeof t==='string').map(t=>t.trim().toLocaleLowerCase()).filter(Boolean));for(const t of tags)counts.set(t,(counts.get(t)||0)+1)}return [...counts].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));}
+function median(values){const v=values.filter(x=>numeric(x)!==null).sort((a,b)=>a-b);return v.length?v.length%2?v[(v.length-1)/2]:(v[v.length/2-1]+v[v.length/2])/2:null;}
+function sellerVerdict(data){
+ const a=data.assessment;
+ // Future calibrated ranking model: never infer Etsy ranking outcome from shop stats alone.
+ if(a&&a.methodology_version==='beginner-v1-validated'&&a.direct_competitors_verified===true&&a.demand_verified===true&&a.outcome_validated===true&&['green','amber','red'].includes(a.level)&&Array.isArray(a.evidence)&&a.evidence.length>=2){
+  return {level:a.level,label:({green:'GREEN · MORE ACCESSIBLE',amber:'AMBER · HARDER WORK',red:'RED · DIFFICULT FOR BEGINNERS'})[a.level],description:typeof a.explanation==='string'?a.explanation:'Read supporting evidence before launching.'};
+ }
+ if(data.shop_data_status==='partial' || data.research_stage==='listings_only'){
+  const known=new Set(data.listings.filter(x=>x.shop_data_available).map(x=>x.shop_id)).size;
+  return {level:'neutral',label:'PARTIAL SHOP COVERAGE',description:`${known} of ${data.unique_shops||'the sampled'} shops have available profiles. Unloaded reviews, ratings and lifetime sales are unknown—not zero. Seller details continue loading automatically when available.`,advice:'Compare listing titles, formats, prices and favorites now. Load relevant shop profiles before assessing seller strength.'};
+ }
+ const shops=new Map();
+ for(const item of data.listings){if(item.shop_id==null)continue;const old=shops.get(item.shop_id)||{};shops.set(item.shop_id,{
+  reviews:Math.max(old.reviews||0, Math.max(0,numeric(item.shop_review_count)||0)),
+  age:Math.max(old.age||0, Math.max(0,numeric(item.shop_age_years)||0)),
+  available:old.available===true||item.shop_data_available===true
+ });}
+ const known=[...shops.values()].filter(s=>s.available);
+ if(known.length<10)return {level:'neutral',label:'LIMITED SHOP EVIDENCE',description:`Only ${known.length} shop profiles with available data. We cannot assess seller strength reliably, and the exact product competition has not been classified.`};
+ const reviewed=known.filter(s=>s.reviews>0).length;
+ const mature=known.filter(s=>s.age>=3).length;
+ const shareReviewed=reviewed/known.length,shareMature=mature/known.length;
+ let label,summary,advice;
+ if(shareReviewed>=0.65 && shareMature>=0.45){label='ESTABLISHED SHOP PRESENCE';summary='Many shops in this sample have customer reviews and multi-year history.';advice='Avoid competing on a generic product alone. Compare narrow product types and test a distinctive offer before spending heavily.';}
+ else if(shareReviewed<=0.30 && shareMature<=0.25){label='FEWER ESTABLISHED SHOPS';summary='This sample includes fewer reviewed, mature shops, which may warrant closer investigation.';advice='Check whether the listings are actually the same product. A small differentiated test may be worthwhile; ranking is not proven.';}
+ else {label='MIXED SHOP LANDSCAPE';summary='This sample contains both newer and established shops.';advice='Review close product matches and compare what established sellers offer versus newer sellers before testing a listing.';}
+ return {level:'neutral',label,description:`${summary} ${reviewed} of ${known.length} shops with available details have reviews; ${mature} are at least 3 years old. These are sampled seller-strength signals—not Etsy keyword difficulty, demand or a ranking forecast.`,advice};
+}
+
+function decisionAndPlan(){
+ const d=state.data,items=d.listings,cs=currencies();
+ const server=d.verdict;
+ const verdict=server&&server.verdict?{level:server.verdict==='GO'?'green':server.verdict==='SKIP'?'red':'amber',label:server.label,description:server.summary,advice:(server.reasons||[]).join(' ')}:sellerVerdict(d);
+ const reviewedShops=new Set(items.filter(x=>numeric(x.shop_review_count)>0).map(x=>x.shop_id)).size;
+ const shopIds=new Set(items.map(x=>x.shop_id).filter(x=>x!==undefined&&x!==null));
+ const experienced=new Set(items.filter(x=>numeric(x.shop_age_years)!==null&&x.shop_age_years>=3).map(x=>x.shop_id)).size;
+ const top=cs[0],prices=top?items.filter(x=>currency(x.currency)===top[0]).map(x=>numeric(x.price)).filter(x=>x!==null&&x>=0):[];
+ const mid=median(prices),priceline=mid===null?'No comparable prices available':`Median listed price ${formatMoney(mid,top[0])} across ${n(prices.length)} listings priced in that currency (not necessarily same product subtype).`;
+ const badge=$('outlook-badge');badge.textContent=verdict.label;badge.className='outlook-status '+verdict.level;
+ txt('outlook-explanation',verdict.description);
+ txt('decision-summary',verdict.level==='neutral'?`For “${safeString(d.keyword)}”: ${verdict.description}`:verdict.description);
+ const box=$('decision-evidence');box.replaceChildren();
+ for(const [a,b] of [[n(items.length),'Etsy listing sample'],[n(shopIds.size),'Unique shops'],[n(reviewedShops),'Shops with reviews'],[n(experienced),'Shops 3+ years old']]){const item=node('div',undefined,'evidence-item');item.append(node('b',a),node('span',b));box.append(item)}
+ txt('decision-action',`${verdict.advice||'Examine the underlying product-level evidence.'} ${priceline} Review 5 matching product listings, then track visits and orders in a small test.`);
+ const leverBox=$('ranking-levers');if(leverBox){leverBox.replaceChildren();const levers=(server&&server.ranking_levers)||d.ranking_levers||[];for(const lv of levers){const item=node('div',undefined,'lever-item');item.append(node('strong',lv.lever||''),node('p',((lv.evidence||'')+' '+(lv.action||'')).trim()));leverBox.append(item);}}
+ const linkbox=$('evidence-links');linkbox.replaceChildren();
+ const seen=new Set();let count=0;for(const x of items){const url=safeString(x.listing_url);if(!/^https:\/\/www\.etsy\.com\/listing\/[0-9]+(?:[/?#]|$)/.test(url)||seen.has(x.shop_id))continue;seen.add(x.shop_id);const a=node('a',`Review listing ${++count} ↗`);a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.title=safeString(x.title);linkbox.append(a);if(count===3)break}
+ txt('scope-sample',`${n(items.length)} unique listings in this sample · ${n(shopIds.size)} unique shops`);
+ txt('plan-subtitle',`For “${safeString(d.keyword)}” · 5 concrete next moves`);
+ const tags=countTags(items).slice(0,3).map(([t])=>t);
+ const steps=$('action-steps');steps.replaceChildren();
+ const stepsData=[
+  ['Choose what you will actually sell',`For “${safeString(d.keyword)}”, define the product, buyer, and delivery format. Digital template vs printed item vs a bundle must be compared separately.`],
+  ['Compare real listings',`Open the sample listings in Competitors and review five like-for-like offers. Note included items, listed price, shop reviews, and potential buyer complaints.`],
+  ['Test seller keyword ideas',tags.length?`Check whether ${tags.map(t=>'“'+t+'”').join(', ')} genuinely describe your product. These are common tags in this sample, not guaranteed search terms.`:'Read competing listing titles and tags for relevant buyer language.'],
+  ['Make one useful differentiation',`Offer a clearly demonstrable advantage based on what those five competitors lack. Test one improved listing before expanding the product range.`],
+  ['Measure before deciding to scale',`Record baseline Etsy visits, favorites, orders, conversion and costs. Track your test in a comparable period; improve or stop based on actual results.`]
+ ];
+ for(const [title,detail] of stepsData){const li=node('li');li.append(node('strong',title),node('p',detail));steps.append(li)}
+}
+$('view-action-plan').addEventListener('click',()=>{tab('actions');$('workspace-heading').scrollIntoView({block:'start',behavior:'smooth'})});
+function sortedFilteredListings(){
+ const q=$('listing-filter').value.trim().toLocaleLowerCase();
+ const c=$('listing-currency').value;
+ const selectedCategory=$('listing-category').value;
+ const sort=$('listing-sort').value;
+ const priceSort=$('price-sort').value;
+ const subset=state.data.listings.filter(x=>{const cat=listingCategory(x),key=cat.id?'id:'+cat.id:(cat.path||cat.name)?'path:'+(cat.path||cat.name).toLocaleLowerCase():'unknown';return (!q||safeString(x.title).toLocaleLowerCase().includes(q)||safeString(x.shop_name).toLocaleLowerCase().includes(q))&&(c==='all'||currency(x.currency)===c)&&(selectedCategory==='all'||key===selectedCategory)});
+ const decorated=subset.map((x,i)=>({x,i}));
+ // Never compare numeric amounts from different currencies. In All currencies
+ // mode, sort by currency group first, then by price inside each group.
+ if(priceSort!=='none'){
+  const sign=priceSort==='asc'?1:-1;
+  decorated.sort((a,b)=>{
+   if(c==='all'){
+    const ac=currency(a.x.currency),bc=currency(b.x.currency);
+    if(ac!==bc)return ac.localeCompare(bc);
+   }
+   const aa=numeric(a.x.price),bb=numeric(b.x.price);
+   if(aa===null)return bb===null?a.i-b.i:1;
+   if(bb===null)return -1;
+   return sign*(aa-bb)||a.i-b.i;
+  });
+  return decorated.map(o=>o.x);
+ }
+ let metric=null;
+ if(sort==='favorites')metric='favorites';
+ else if(sort==='shop_sales')metric='shop_total_sales';
+ else if(sort==='reviews')metric='shop_review_count';
+ else if(sort==='age')metric='shop_age_years';
+ else if(sort==='rating')metric='shop_rating';
+ if(metric)decorated.sort((a,b)=>{
+  const aa=numeric(a.x[metric]),bb=numeric(b.x[metric]);
+  if(aa===null)return bb===null?a.i-b.i:1;
+  if(bb===null)return -1;
+  return bb-aa||a.i-b.i;
+ });
+ return decorated.map(o=>o.x);
+}
+function listingsTable(){
+ if(!state.data)return;
+ const rows=sortedFilteredListings(),size=10,pages=Math.max(1,Math.ceil(rows.length/size));
+ state.page=Math.min(Math.max(0,state.page),pages-1);
+ const body=$('listing-body');body.replaceChildren();
+ for(const x of rows.slice(state.page*size,state.page*size+size)){
+  const tr=node('tr');if(x.listing_id!=null)tr.dataset.listingId=String(x.listing_id);
+  const photo=node('td',undefined,'listing-photo');const imgUrl=safeString(x.image_url);
+  if(imgUrl){const img=document.createElement('img');img.src=imgUrl;img.alt='';img.loading='lazy';img.className='listing-thumb';photo.append(img);}else photo.append(node('span','—','muted'));
+  const name=node('td'),title=safeString(x.title)||'Untitled listing',url=safeString(x.listing_url);
+  if(/^https:\/\/www\.etsy\.com\/listing\/[0-9]+(?:[/?#]|$)/.test(url)){
+   const a=node('a',title,'title-link');a.href=url;a.target='_blank';a.rel='noopener noreferrer';name.append(a);
+  }else name.append(node('span',title));
+  const category=listingCategory(x);const categoryTd=node('td',category.name||'—','category-cell');if(category.path)categoryTd.title=category.path.replace(/\s*>\s*/g,' → ');
+  tr.append(photo,name,categoryTd,node('td',safeString(x.listing_type)||'—'),node('td',formatPrice(x)),node('td',n(numeric(x.favorites))),node('td',safeString(x.shop_name)||'—'),node('td',formatAge(x)),node('td',n(numeric(x.shop_review_count))),node('td',formatRating(x)),node('td',n(numeric(x.shop_total_sales))));body.append(tr);
+ }
+ body.querySelectorAll('tr[data-listing-id]').forEach(row=>{const cell=row.querySelector('.listing-photo');if(!cell||cell.querySelector('img'))return;fetch(`/etsy/listing/${row.dataset.listingId}/image`).then(r=>r.ok?r.json():null).then(d=>{if(d&&d.image_url){cell.replaceChildren();const im=document.createElement('img');im.src=d.image_url;im.alt='';im.loading='lazy';im.className='listing-thumb';cell.append(im);}}).catch(()=>{});});
+ if(!rows.length){const tr=node('tr'),td=node('td','No listings match these filters. Try clearing the search or selecting all currencies.');td.colSpan=11;tr.append(td);body.append(tr)}
+ txt('pagination-info',rows.length?`${n(state.page*size+1)}–${n(Math.min(rows.length,(state.page+1)*size))} of ${n(rows.length)} listings · Page ${state.page+1}/${pages}`:'No matching listings');
+ $('prev-page').disabled=state.page===0;$('next-page').disabled=state.page>=pages-1;
+ $('price-sort').disabled=false;
+ $('price-sort-hint').textContent=$('price-sort').value!=='none'?($('listing-currency').value==='all'?'Prices sorted within separate currency groups. Amounts from different currencies are never compared.':'Prices sorted numerically within the selected currency.'):'Choose a price order or another listing signal. Shop totals describe shops, not individual listings.';
+}
+for(const id of ['listing-filter','listing-currency','listing-category','listing-sort','price-sort'])$(id).addEventListener(id==='listing-filter'?'input':'change',()=>{if(id==='listing-sort'&&$('listing-sort').value!=='default')$('price-sort').value='none';if(id==='price-sort'&&$('price-sort').value!=='none')$('listing-sort').value='default';state.page=0;listingsTable()});$('price-currency').addEventListener('change',priceChart);$('prev-page').addEventListener('click',()=>{state.page=Math.max(0,state.page-1);listingsTable()});$('next-page').addEventListener('click',()=>{state.page++;listingsTable()});
+const marketNames={US:"United States",GB:"United Kingdom",CA:"Canada",AU:"Australia",DE:"Germany",FR:"France",IT:"Italy",ES:"Spain",NL:"Netherlands",BE:"Belgium",AT:"Austria",CH:"Switzerland",SE:"Sweden",DK:"Denmark",NO:"Norway",FI:"Finland",IE:"Ireland",PL:"Poland",PT:"Portugal",JP:"Japan",IN:"India",PK:"Pakistan",NZ:"New Zealand",MX:"Mexico",BR:"Brazil",TR:"Türkiye",AE:"United Arab Emirates",SG:"Singapore"};
+function marketLabel(data){const code=data.buyer_country;return code?`${marketNames[code]||code}`:'Global'}
+function renderMatchAudit(data){
+ const panel=$('match-audit-panel');const a=data.relevance_audit;
+ if(!a||!a.counts||a.method!=='unicode_lexical_evidence_v3_baseline'){panel.hidden=true;return}
+ panel.hidden=false;
+ const c=a.counts;
+ const total=Number(a.sampled_unique)||0;
+ txt('match-audit-summary',`${n(c.strong_title_match||0)} of ${n(total)} sampled titles contain the full keyword or all its distinctive words. ${n(c.partial_match||0)} partial title matches; ${n(c.tags_only||0)} tags-only; ${n(c.needs_review||0)} need review.`);
+ txt('match-audit-details','These are text-matching signals only. Different languages, digital/physical formats, or product subtypes need further validation. No beginner ranking verdict is inferred.');
+}
+function renderDemandStatus(data){const market=data.buyer_country?(marketNames[data.buyer_country]||data.buyer_country):'Global';txt('demand-market-note',`Market: ${market} · buyer-search data provider not connected. Etsy listing matches below are not demand.`)}
+function render(data){if(!data||!Array.isArray(data.listings)||!data.listings.every(x=>x&&typeof x==='object'))throw Error('Unexpected search result format.');state.data=data;state.page=0;$('save-research').disabled=data.research_stage==='listings_only'||data.shop_data_status==='partial';txt('report-keyword',safeString(data.keyword)||'Research results');let date='';try{date=new Date(data.collected_at).toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'})}catch{}txt('snapshot-meta',`${data.research_stage==='listings_only'?'Listings ready · seller details loading · ':''}Collected ${date||'recently'} · ${marketLabel(data)} · ${data.listing_currency_filter?`original ${data.listing_currency_filter} listings only`:"all listing currencies"} · Etsy sample`);txt('metric-sample',n(data.listings.length));txt('metric-shops',n(numeric(data.unique_shops)));txt('metric-matches',n(numeric(data.reported_matching_listings)));txt('metric-currencies',n(currencies().length));txt('scope-buyer-country',data.buyer_country?`${marketNames[data.buyer_country]||data.buyer_country} · shipping-eligible ${data.listing_currency_filter||"local currency"} listings (not shop location)`:'Global · no buyer-country filter (not complete worldwide coverage)');$('welcome').hidden=true;$('content').classList.add('visible');updateShopCoverage(data);buildCurrencyOptions();buildCategoryOptions();renderCategoryAnalysis();priceChart();tagsChart();renderTagIntelligence();renderRelatedKeywords();renderDemandStatus(data);titlePhraseChart();insights();renderMatchAudit(data);$('listing-filter').value='';$('listing-sort').value='default';$('listing-currency').value=data.listing_currency_filter||'all';$('price-sort').value='none';decisionAndPlan();listingsTable();tab('overview')}
+$('buyer-country').addEventListener('change',()=>{if(state.data){state.data=null;$('content').classList.remove('visible');$('welcome').hidden=false;setStatus('Market changed. Click Research keyword to load results for this market.');}});
+// Two-stage research: render verified listing-only records, then replace with enriched shops.
+// Partial snapshots cannot be saved as complete research or cached as final reports.
+let researchToken = 0;
+function checkMarketIntegrity(data,buyer_country){
+if((data.buyer_country||null)!==buyer_country)throw Error('Market filter was not confirmed by backend. Results are withheld for safety.');if(buyer_country && (data.currency_filter_mode!=='original_listing_currency'||data.listing_currency_filter!==({US:'USD',GB:'GBP',CA:'CAD',AU:'AUD',DE:'EUR',FR:'EUR',IT:'EUR',ES:'EUR',NL:'EUR',BE:'EUR',AT:'EUR',CH:'CHF',SE:'SEK',DK:'DKK',NO:'NOK',FI:'EUR',IE:'EUR',PL:'PLN',PT:'EUR',JP:'JPY',IN:'INR',PK:'PKR',NZ:'NZD',MX:'MXN',BR:'BRL',TR:'TRY',AE:'AED',SG:'SGD'})[buyer_country]||data.listings.some(x=>x.currency!==data.listing_currency_filter)))throw Error('Listing currency filter was not confirmed. Results withheld to prevent mixed-market prices.');
+}
+function researchMessage(data,preview){
+ return `${preview?'Listings ready':'Research complete'} · ${n(data.listings.length)} listings · ${marketLabel(data)}.`;
+}
+function updateShopCoverage(data){
+ const total=Number.isInteger(data.unique_shops)?data.unique_shops:new Set(data.listings.map(x=>x.shop_id).filter(x=>x!=null)).size;
+ const known=new Set(data.listings.filter(x=>x.shop_data_available).map(x=>x.shop_id)).size;
+ const preview=data.research_stage==='listings_only';
+ const detail=preview?'Adding seller details automatically…':data.shop_data_status==='complete'?'All available shop details loaded.':'Some seller details were unavailable. Missing values are not zero.';
+ txt('shop-coverage-info',`${known}/${total} shop profiles available · ${detail}`);
+}
+async function autoEnrich(keyword,buyer_country,data){
+ // v1.6: quick results already show listings; fill missing shop profiles
+ // in the background via POST /etsy/search/enrich (mode=full). If it fails,
+ // the quick data stays — nothing is lost.
+ if(!data||data.enrichment_mode!=='quick'||data.shop_data_status==='complete'||state.enriching)return;
+ state.enriching=true;setStatus('Seller details loading in background…','busy');
+ try{
+  const res=await fetch('/etsy/search/enrich',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({keyword,buyer_country,mode:'full'})});
+  const out=await res.json();
+  if(res.ok&&out.status==='complete'&&out.data){checkMarketIntegrity(out.data,buyer_country);render(out.data);setStatus('All available shop details loaded.','good');}
+ }catch(e){/* keep quick data */}
+ finally{state.enriching=false;}
+}
+$('search-form').addEventListener('submit',async e=>{
+ e.preventDefault();const token=++researchToken;
+ const keyword=$('keyword').value.trim().replace(/\s+/g,' ');
+ const buyer_country=$('buyer-country').value||null;
+ const mode='quick'; // v1.6 quick-first: listings show fast, seller details enrich in background.
+ if(keyword.length<2){setStatus('Enter at least 2 characters.','bad');return}
+ const button=$('research-button');button.disabled=true;$('buyer-country').disabled=true;button.textContent='Researching…';
+ $('content').classList.remove('visible');$('welcome').hidden=false;
+ setStatus('Finding products in your selected market…','busy');
+ try{
+  const start=await fetch('/etsy/search/start',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({keyword,buyer_country,mode})});
+  const started=await start.json();
+  if(!start.ok)throw Error(typeof started.detail==='string'?started.detail:`Search failed (HTTP ${start.status}).`);
+  if(started.status==='complete'){
+   checkMarketIntegrity(started.data,buyer_country);render(started.data);
+   setStatus(researchMessage(started.data,false)+' · Recent cached report. '+(started.data.shop_data_status==='partial'?'Shop profiles incomplete.':''),'good');
+   autoEnrich(keyword,buyer_country,started.data);return;
+  }
+  if(!/^[a-f0-9]{32}$/.test(started.job_id||''))throw Error('Invalid research job identifier.');
+  let previewShown=false;
+  for(let attempt=0;attempt<240;attempt++){
+   await new Promise(resolve=>setTimeout(resolve,750));
+   if(token!==researchToken)return;
+   const response=await fetch(`/etsy/search/progress/${started.job_id}`,{cache:'no-store'});
+   const update=await response.json();
+   if(!response.ok)throw Error(update.detail||`Research failed (HTTP ${response.status}).`);
+   if(update.status==='failed')throw Error(update.error||'Etsy research failed.');
+   if(update.status==='listings_ready'&&!previewShown){
+    checkMarketIntegrity(update.data,buyer_country);
+    render(update.data);tab('competitors');previewShown=true;
+    $('save-research').disabled=true;
+    setStatus(researchMessage(update.data,true)+' Adding seller details automatically…','busy');
+   }
+   if(update.status==='complete'){
+    checkMarketIntegrity(update.data,buyer_country);
+    render(update.data);tab('competitors');
+    setStatus(researchMessage(update.data,false)+(update.data.shop_data_status==='partial'?' · Some shop profiles unavailable.':''),'good');
+    autoEnrich(keyword,buyer_country,update.data);return;
+   }
+  }
+  throw Error('Research is taking longer than expected. Try again after checking backend logs.');
+ }catch(err){
+  if(token===researchToken){setStatus((state.data&&state.data.research_stage==='listings_only'?'Products shown, but seller details could not finish: ':'Research failed: ')+err.message,'bad');}
+ }finally{if(token===researchToken){button.disabled=false;$('buyer-country').disabled=false;button.textContent='Research keyword'}}
+});
+
+
+// Navigation stays client-side; no additional API requests when changing workspace.
+document.querySelectorAll('.side-link').forEach(button=>button.addEventListener('click',()=>{
+ tab(button.dataset.view);window.scrollTo({top:0,behavior:'smooth'});
+ if(!state.data && button.dataset.view!=='saved'){
+  const messages={overview:'Research a keyword to get started',competitors:'Search a keyword to see competitor listings',keywords:'Search a keyword to explore seller tag patterns',opportunities:'Search a keyword to examine niche evidence',actions:'Search a keyword to create a listing test plan'};
+  $('welcome').querySelector('h2').textContent=messages[button.dataset.view]||'Start with a keyword';
+ }
+}));
+const SAVED_KEY='niche-intelligence-v4-snapshots';
+function readSaved(){try{const list=JSON.parse(localStorage.getItem(SAVED_KEY)||'[]');return Array.isArray(list)?list.filter(x=>x&&typeof x==='object'&&x.data&&Array.isArray(x.data.listings)):[]}catch{return []}}
+function renderSavedResearch(){
+ const box=$('saved-list');box.replaceChildren();const records=readSaved();
+ $('save-research').disabled=!state.data||state.data.research_stage==='listings_only'||state.data.shop_data_status==='partial';
+ if(!records.length){box.append(node('div','No saved reports yet. Search a keyword, then choose Save current research.','empty-saved'));return}
+ records.forEach((record)=>{
+  const wrap=node('div',undefined,'saved-entry'),info=node('div');info.append(node('strong',safeString(record.data.keyword)||'Untitled search'),node('small',`${record.data.buyer_country?marketNames[record.data.buyer_country]||record.data.buyer_country:'Global'} · ${n(record.data.listings.length)} listings · Saved ${new Date(record.savedAt).toLocaleDateString()}`));
+  const buttons=node('div',undefined,'saved-buttons'),open=node('button','Open report','secondary'),del=node('button','Delete','secondary');
+  open.type='button';del.type='button';
+  open.addEventListener('click',()=>{
+   if(record.data.buyer_country && (record.data.currency_filter_mode!=='original_listing_currency'||!record.data.listing_currency_filter||record.data.listings.some(x=>x.currency!==record.data.listing_currency_filter))){
+    $('saved-status').textContent='Older saved market report does not have verified native-currency filtering. Please run a fresh search.';
+    return;
+   }
+   $('keyword').value=safeString(record.data.keyword);$('buyer-country').value=record.data.buyer_country||'';
+   render(record.data);setStatus('Opened saved snapshot. These results are not a fresh Etsy search.','good');$('snapshot-meta').textContent+=' · Saved browser snapshot';
+   window.scrollTo({top:0,behavior:'smooth'});
+  });
+  del.addEventListener('click',()=>{try{localStorage.setItem(SAVED_KEY,JSON.stringify(readSaved().filter(x=>x.id!==record.id)));$('saved-status').textContent='Saved report deleted.'}catch{$('saved-status').textContent='Could not delete saved report.'}renderSavedResearch()});
+  buttons.append(open,del);wrap.append(info,buttons);box.append(wrap);
+ });
+}
+$('save-research').addEventListener('click',()=>{
+ if(!state.data || state.data.research_stage==='listings_only' || state.data.shop_data_status==='partial'){$('saved-status').textContent='This research has incomplete shop data; a complete saved report is not available.';return}
+ try{
+  const records=readSaved();const key=`${safeString(state.data.keyword).toLocaleLowerCase()}|${state.data.buyer_country||''}`;
+  const fresh=records.filter(x=>x.id!==key);
+  fresh.unshift({id:key,savedAt:new Date().toISOString(),data:state.data});
+  localStorage.setItem(SAVED_KEY,JSON.stringify(fresh.slice(0,8)));
+  $('saved-status').textContent='Research saved in this browser.';renderSavedResearch();
+ }catch{$('saved-status').textContent='Browser storage is full or disabled. The report could not be saved.'}
+});
+tab('overview');
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+# Render.com deploy (free tier works). In the Render dashboard, create a
+# Web Service from this repo and paste this file's settings, or use the
+# "YAML" deploy. Secrets marked sync: false must be set in the dashboard —
+# they are never written in this file.
+services:
+  - type: web
+    name: niche-intelligence
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: NI_PUBLIC
+        value: "1"
+      - key: ETSY_KEYSTRING
+        sync: false
+      - key: ETSY_SHARED_SECRET
+        sync: false
+      - key: NI_ADMIN_PASSWORD
+        sync: false

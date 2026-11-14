@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+*.tmp
+.env
+*.sqlite3
+research_results/*.json
+!research_results/etsy_minimalist-wedding-invitation_2e737ddc.json
+!research_results/etsy_minimalist-wedding-invitation_2e737ddc_US_NATIVE-USD_QUICK.json
+!research_results/etsy_minimalist-wedding-invitation_2e737ddc_US_NATIVE-USD_FULL.json

@@ -1,0 +1,10 @@
+# Niche Intelligence v1.6.0 — dependencies
+# Generated from the shipped Windows .venv (see CHANGELOG). Install into a
+# fresh virtual environment; never commit a .venv folder.
+fastapi==0.162.2
+uvicorn==0.54.0
+pydantic==2.14.3
+starlette==1.10.0
+httpx==0.28.1
+keyring==25.7.0
+anyio==4.16.0
